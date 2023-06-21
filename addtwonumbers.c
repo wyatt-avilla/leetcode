@@ -10,47 +10,57 @@ struct ListNode {
 
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
     struct ListNode *i, *j, *sumList;
-    size_t exp, sum = 0;
-    for (i = l1, exp = 1; i != NULL; i = i->next, exp *= 10) {
-        sum += i->val * exp;
+    bool iDone = false;
+    bool jDone = false;
+    bool carry = false;
+
+    int placeval;
+
+    i = l1;
+    j = l2;
+    struct ListNode *currNode = (struct ListNode *) malloc(sizeof(struct ListNode));
+    sumList = currNode;
+    while ((i->next != NULL) || (j->next != NULL)) {
+
+        placeval = i->val + j->val + carry;
+        if (placeval >= 10) {
+            placeval -= 10;
+            carry = true;
+        } else {
+            carry = false;
+        }
+        currNode->val = placeval;
+
+        if ( (i->next == NULL) && (j->next == NULL) && !carry ) {
+            currNode->next = NULL;
+        } else if ( (i->next == NULL) && (j->next == NULL) && carry ) {
+            currNode->next = (struct ListNode *) malloc(sizeof(struct ListNode));
+            currNode->next->val = 1;
+            currNode->next->next = NULL;
+            currNode = currNode->next; // prob unneeded
+        } else {
+            currNode->next = (struct ListNode *) malloc(sizeof(struct ListNode));
+            currNode->next->val = -1;
+            currNode->next->next = NULL;
+            currNode = currNode->next;
+        }
+        
+
+        if ( i->next != NULL ) {
+            i = i->next;
+        } else if (i->next == NULL){
+            i->val = 0;
+        }
+
+        if ( j->next != NULL ) {
+            j = j->next;
+        } else if (j->next == NULL) {
+            j->val = 0;
+        }
+        
     }
-    for (j = l2, exp = 1; j != NULL; j = j->next, exp *= 10) {
-        sum += j->val * exp;
-    }
-
-    long sumcopy;
-    int digitcount;
-    for (digitcount = 0, sumcopy = sum; sumcopy > 0; sumcopy /= 10, digitcount++) {
-        ;
-    }
-
-    if (digitcount == 0) {
-        sumList = malloc(sizeof(struct ListNode));
-        sumList->val = 0;
-        sumList->next = NULL;
-        return sumList;
-    }
-
-    char *intstr = calloc(sizeof(char), digitcount+1);
-    snprintf(intstr, (digitcount+1), "%ld", (sum)); 
-
-    int asciiDigit;
-    struct ListNode *currentNode = malloc(sizeof(struct ListNode));
-    sumList = currentNode;
-
-    for (int k = --digitcount; k > 0; k--) {
-
-        asciiDigit = intstr[k] - '0';
-        currentNode->next = malloc(sizeof(struct ListNode));
-
-        currentNode->val = asciiDigit;
-        currentNode = currentNode->next;
-
-    }
-    currentNode->val = intstr[0] - '0';
-    currentNode->next =  NULL;
-
-    free(intstr);
+    
+    currNode = NULL;
     return sumList;
 }
 
@@ -59,17 +69,25 @@ int main() {
 
     struct ListNode* head = NULL;
     head = (struct ListNode *) malloc(sizeof(struct ListNode));
-    head->val = 9;
-    head->next = NULL; 
+    head->val = 6;
+    head->next = (struct ListNode *) malloc(sizeof(struct ListNode)); 
+    head->next->val = 6;
+    head->next->next = (struct ListNode *) malloc(sizeof(struct ListNode));
+    head->next->next->val = 3;
+    head->next->next->next = (struct ListNode *) malloc(sizeof(struct ListNode));
+    head->next->next->next->val = 2;
+    head->next->next->next->next = NULL;
 
     struct ListNode* head2 = NULL;
     head2 = (struct ListNode *) malloc(sizeof(struct ListNode));
-    head2->val = 1;
+    head2->val = 4;
     head2->next = (struct ListNode *) malloc(sizeof(struct ListNode));
-    head2->next->val = 1;
+    head2->next->val = 5;
     head2->next->next = (struct ListNode *) malloc(sizeof(struct ListNode));
-    head2->next->next->val = 4;
-    head2->next->next->next = NULL;
+    head2->next->next->val = 2;
+    head2->next->next->next = (struct ListNode *) malloc(sizeof(struct ListNode));
+    head2->next->next->next->val = 6;
+    head2->next->next->next->next = NULL;
 
     struct ListNode *headcopy = head;
     struct ListNode *head2copy = head2;
