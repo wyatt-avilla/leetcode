@@ -1,6 +1,6 @@
 from typing import List
 from typing import Set
-from collections import Counter
+from functools import cache
 
 
 class GraphNode:
@@ -23,27 +23,47 @@ class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
 
         graphRoot = GraphNode(amount)
+
         def buildGraph(root: GraphNode, coins: List[int], prevNodeVal: int, currentPath: List[int], allPaths: Set):
-            updatedPath = []
-            if prevNodeVal - root.value > 0:
-                updatedPath = currentPath + [prevNodeVal - root.value]
             for coinval in coins:
                 if (root.value - coinval) >= 0:
                     root.add_neighbor(GraphNode(root.value - coinval))
-                if len(root.neighbors) == 0 and (root.value == 0):
-                    allPaths.add(tuple(Counter(updatedPath)))
+
+            updatedPath = []
+            if prevNodeVal - root.value > 0:
+                updatedPath = currentPath + [prevNodeVal - root.value]
+            if len(root.neighbors) == 0 and (root.value == 0):
+                updatedPath.sort()
+                allPaths.add(tuple(updatedPath))
+
             for neighbor in root.neighbors:
                 buildGraph(neighbor, coins, root.value, updatedPath, allPaths)
 
+        @cache
+        def obtainPath(amount: int, coins: List[int]) -> int:
+            if amount == 0:
+                return 0
+            elif amount < 0:
+                return -1
+
+            else:
+                validPaths = set()
+                for coin in coins:
+                    ob
+
+
+
         allpaths = set()
         buildGraph(graphRoot, coins, graphRoot.value, [], allpaths)
+
         graphRoot.visualizeGraph()
         return(len(allpaths))
 
 
+coinList = [1, 2, 5]
+targetTotal = 5
 
-
-Solution().change(100, [1, 2, 5])
+print(f"{Solution().change(targetTotal, coinList)} possible ways to make {targetTotal} cents with {coinList}")
 
 
 
