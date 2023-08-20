@@ -15,7 +15,7 @@ class Solution:
                     if any(row[colidxStart + sideSize] == 0 for row in matrix[rowidxStart:rowidxStart + sideSize]):
                         foundZero = True
 
-                    if any(element == 0 for element in matrix[rowidxStart + sideSize][colidxStart:colidxStart + sideSize + 1]):
+                    if not foundZero and any(element == 0 for element in matrix[rowidxStart + sideSize][colidxStart:colidxStart + sideSize + 1]):
                         foundZero = True
 
                     if not foundZero:
