@@ -1,76 +1,46 @@
 from typing import List
-from typing import Set
-from functools import cache
 
-
-class GraphNode:
-    def __init__(self, value):
-        self.value = value
-        self.neighbors = []
-
-    def add_neighbor(self, neighbor):
-        self.neighbors.append(neighbor)
-
-    def visualizeGraph(self):
-        print(self)
-        for connection in self.neighbors:
-            connection.visualizeGraph()
-
-    def __str__(self):
-        return f"{self.value} -> ({', '.join(str(neighbor.value) for neighbor in self.neighbors)})"
 
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
+        coinsLen = len(coins)
+        tableLen = amount + 1
+        table: List[List[int]] = [[0 for _ in range(coinsLen)] for _ in range(tableLen)]
+        for i in range(coinsLen): # always 1 way to make zero
+            table[0][i] = 1
 
-        graphRoot = GraphNode(amount)
-
-        def buildGraph(root: GraphNode, coins: List[int], prevNodeVal: int, currentPath: List[int], allPaths: Set):
-            for coinval in coins:
-                if (root.value - coinval) >= 0:
-                    root.add_neighbor(GraphNode(root.value - coinval))
-
-            updatedPath = []
-            if prevNodeVal - root.value > 0:
-                updatedPath = currentPath + [prevNodeVal - root.value]
-            if len(root.neighbors) == 0 and (root.value == 0):
-                updatedPath.sort()
-                allPaths.add(tuple(updatedPath))
-
-            for neighbor in root.neighbors:
-                buildGraph(neighbor, coins, root.value, updatedPath, allPaths)
-
-        @cache
-        def obtainPath(amount: int, coins: List[int]) -> int:
-            if amount == 0:
-                return 0
-            elif amount < 0:
-                return -1
-
-            else:
-                validPaths = set()
-                for coin in coins:
-                    ob
+        for i in range(1, tableLen):
+            currentCell = table[i]
+            if i % coins[0] == 0:
+                currentCell[0] = 1
+            for j in range(1, coinsLen):
+                currentCoin = coins[j]
+                if currentCoin > i:
+                    currentCell[j] = currentCell[j-1]
+                else:
+                    currentCell[j] = currentCell[j-1] + table[i-coins[j]][j]
 
 
 
-        allpaths = set()
-        buildGraph(graphRoot, coins, graphRoot.value, [], allpaths)
 
-        graphRoot.visualizeGraph()
-        return(len(allpaths))
-
-
-coinList = [1, 2, 5]
-targetTotal = 5
-
-print(f"{Solution().change(targetTotal, coinList)} possible ways to make {targetTotal} cents with {coinList}")
+        for i in range(0, tableLen):
+            print(f"{i} -> ( ", end="")
+            for j in range(len(table[i])):
+                print(f"{coins[j]}:{table[i][j]} ", end="")
+            print(")")
 
 
 
-#gg = GraphNode(5)
-#gg.add_neighbor(GraphNode(1))
-#gg.add_neighbor(GraphNode(2))
-#gg.add_neighbor(GraphNode(5))
-#gg.neighbors[0].add_neighbor(GraphNode(40))
-#
-#gg.visualizeGraph()
+        return table[amount][-1]
+
+
+assert Solution().change(5, [1, 2, 5]) == 4
+assert Solution().change(6, [1, 2, 5]) == 5
+assert Solution().change(7, [1, 2, 5]) == 6
+assert Solution().change(500, [1, 2, 5]) == 12701
+assert Solution().change(8, [2, 3]) == 2
+assert Solution().change(3, [2]) == 0
+assert Solution().change(10, [10]) == 1
+assert Solution().change(10, [5]) == 1
+assert Solution().change(0, [7]) == 1
+assert Solution().change(5, [1, 2, 5]) == 4

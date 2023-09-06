@@ -1,27 +1,34 @@
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
-        w1Len = len(word1)
-        w2Len = len(word2)
-        w1Startidx = 0
-        w2Startidx = 0
-        w1Similar = []
-        w2Similar = []
-        for i in range(max(w1Len, w2Len)):
-            print(f"i is {i}")
-            if i < w1Len and word1[i] in word2[w2Startidx:]:
-                print(f"{word1[i]} in {word2[w2Startidx:]}")
-                w1Similar.append(word1[i])
-                w2Startidx += word2[w2Startidx:].index(word1[i]) + 1
+        def validSubString(smallerWord: str, biggerWord: str, sub: str) -> bool:
+            smallerLen = len(smallerWord)
+            biggerLen = len(biggerWord)
+            subLen = len(sub)
+            smallTargetIndex = 0
+            bigTargetIndex = 0
+            for i in range(biggerLen):
+                if i < smallerLen and smallTargetIndex > len(sub) and smallerWord[i] == sub[smallTargetIndex]:
+                    smallTargetIndex += 1
+                if bigTargetIndex > len(sub) and biggerWord[i] == sub[bigTargetIndex]:
+                    bigTargetIndex += 1
+            return subLen == smallTargetIndex == bigTargetIndex
 
-            if i < w2Len and word2[i] in word1[w1Startidx:]:
-                print(f"{word2[i]} in {word1[w1Startidx:]}")
-                w2Similar.append(word2[i])
-                w1Startidx += word1[w1Startidx:].index(word2[i]) + 1
+        smallerWord, biggerWord = ((word1), word2) if len(word1) <= len(word2) else (word2, word1)
+        sharedChars = [char for char in smallerWord if char in biggerWord]
+        subStrings = [""]
+        for string in subStrings:
+            print(string)
+            for char in sharedChars:
+                possibleString = string + char
+                print(possibleString)
+                if validSubString(smallerWord, biggerWord, possibleString):
+                    subStrings.append(possibleString)
 
-        print(w1Similar, w2Similar)
-        closestSimilar = max(len(w1Similar), len(w2Similar))
-        return w1Len + w2Len - 2*closestSimilar
+        return max(len(string) for string in subStrings)
 
 
-
-print(Solution().minDistance("abcdxabcde", "abcdeabcdx"))
+assert Solution().minDistance("sea", "eat") == 2
+assert Solution().minDistance("leetcode", "etco") == 4
+assert Solution().minDistance("intention", "execution") == 8
+assert Solution().minDistance("mart", "karma") == 5
+print(Solution().minDistance("altruistic", "algorithm"))
