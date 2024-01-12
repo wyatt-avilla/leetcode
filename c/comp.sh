@@ -5,7 +5,7 @@ if [ $# != 1 ] && [ $# != 2 ]; then
     exit 1
 fi
 
-gcc -Wall -Wextra -g -O0 "$1" # compile...
+gcc -lm -Wall -Wextra -g -O0 "$1" # compile...
 
 if [ ! -f ./a.out ]; then
     echo "fix the error q_q"
