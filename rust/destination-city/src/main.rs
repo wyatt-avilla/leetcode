@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/destination-city/description/
+// https://leetcode.com/problems/destination-city/
 
 use std::collections::HashMap;
 

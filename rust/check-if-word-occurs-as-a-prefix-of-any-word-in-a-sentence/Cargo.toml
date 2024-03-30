@@ -1,8 +1,0 @@
-[package]
-name = "check-if-word-occurs-as-a-prefix-of-any-word-in-a-sentence"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
