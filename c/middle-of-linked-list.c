@@ -1,15 +1,13 @@
 // https://leetcode.com/problems/middle-of-the-linked-list/
 
+#include "SLL.h"
+
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 typedef struct ListNode* node;
 
-struct ListNode {
-    int val;
-    struct ListNode *next;
-};
 
 node middleNode(struct ListNode* head) {
     node current = head;
@@ -53,12 +51,12 @@ int main() {
     } else {
         printf("\033[1;31mFAIL\033[0m\n");
     }
-    //free(middle_node);
+    // free(middle_node);
 
     node current1 = case_1_head;
     while (current1 != NULL) {
         node prev = current1;
-        //printf("%d ", current->val);
+        // printf("%d ", current->val);
         current1 = current1->next;
         free(prev);
     }
@@ -83,12 +81,12 @@ int main() {
     } else {
         printf("\033[1;31mFAIL\033[0m\n");
     }
-    //free(middle_node_2);
+    // free(middle_node_2);
 
     node current2 = case_2_head;
     while (current2 != NULL) {
         node prev = current2;
-        //printf("%d ", current->val);
+        // printf("%d ", current->val);
         current2 = current2->next;
         free(prev);
     }
