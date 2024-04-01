@@ -2,19 +2,11 @@
 
 from enum import Enum
 from typing import List, Optional
-
+from data_structures import TreeNode
 
 class TraversalType(Enum):
     INORDER = 1
     POSTORDER = 2
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
 
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:

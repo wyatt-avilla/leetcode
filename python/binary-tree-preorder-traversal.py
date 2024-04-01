@@ -2,12 +2,8 @@
 
 from typing import List
 from typing import Optional
+from data_structures import TreeNode
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:

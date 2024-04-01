@@ -3,19 +3,7 @@
 from typing import Optional
 from typing import List
 from functools import lru_cache
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-        
-
-    def __str__(self):
-        if self.left or self.right:
-            return f"({self.val}) -> ({self.left}) ({self.right})"
-        return f"{self.val}"
+from data_structures import TreeNode
 
 class Solution:
     @lru_cache

@@ -1,12 +1,9 @@
 # https://leetcode.com/problems/add-one-row-to-tree/
 
+from data_structures import TreeNode
+
 from typing import Optional
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 
 class Solution:
     def addOneRow(self, root: Optional[TreeNode], val: int, depth: int) -> Optional[TreeNode]:
