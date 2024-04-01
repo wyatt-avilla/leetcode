@@ -6,11 +6,11 @@ impl Solution {
     // the alternative "double s" solution to this is really clever
     pub fn rotate_string(s: String, goal: String) -> bool {
         let s_len = s.len();
-        let goal:Vec<char> = goal.chars().collect();
-        let mut s:Vec<char> = s.chars().collect();
+        let goal: Vec<char> = goal.chars().collect();
+        let mut s: Vec<char> = s.chars().collect();
 
         (0..s_len).any(|_| {
-            s.rotate_right(1);  // ty core <3. wouldve used a queue otherwise...
+            s.rotate_right(1); // ty core <3. wouldve used a queue otherwise...
             s == goal
         })
     }

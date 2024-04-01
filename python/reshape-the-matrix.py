@@ -1,12 +1,13 @@
 # https://leetcode.com/problems/reshape-the-matrix/
 
-from typing import List
-from collections import deque
+from __future__ import annotations
+
 import itertools
+from collections import deque
 
 
 class Solution:
-    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
+    def matrixReshape(self, mat: list[list[int]], r: int, c: int) -> list[list[int]]:
         flattened = deque(list(itertools.chain(*mat)))
         reshaped = []
 
@@ -15,7 +16,7 @@ class Solution:
 
         for row in range(r):
             reshaped.append([])
-            for col in range(c):
+            for _col in range(c):
                 reshaped[row].append(flattened.popleft())
 
         return reshaped

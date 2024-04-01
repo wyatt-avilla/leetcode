@@ -1,37 +1,35 @@
 # https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
-from typing import Set
+from __future__ import annotations
 
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        strLen = len(s)
-        containedChars: Set[str] = set()
-        longestLen: int = 0
+        str_len = len(s)
+        contained_shars: set[str] = set()
+        longest_len: int = 0
         left: int = 0
         right: int = 0
-        while right < strLen:
-            currentChar = s[right]
-            if currentChar not in containedChars:
-                containedChars.add(currentChar)
+        while right < str_len:
+            current_char = s[right]
+            if current_char not in contained_shars:
+                contained_shars.add(current_char)
                 right += 1
             else:
-                containedChars.remove(s[left])
+                contained_shars.remove(s[left])
                 left += 1
 
-            longestLen = max(longestLen, right-left)
+            longest_len = max(longest_len, right - left)
 
-        return longestLen
-
-
+        return longest_len
 
 
 cases = [
-        ("abcabcbb", 3),
-        ("bbbbb", 1),
-        ("", 0),
-        ("pwwkew", 3),
-        ]
+    ("abcabcbb", 3),
+    ("bbbbb", 1),
+    ("", 0),
+    ("pwwkew", 3),
+]
 
 for case in cases:
     inp, exp = case

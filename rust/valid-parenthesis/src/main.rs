@@ -7,15 +7,26 @@ impl Solution {
         let mut stack: Vec<char> = Vec::new();
         for c in s.chars() {
             let sub_valid: Option<bool> = match c {
-                '(' => { stack.push(c); None },
-                ')' => { Some(stack.pop() == Some('(')) },
-                '[' => { stack.push(c); None },
-                ']' => { Some(stack.pop() == Some('[')) },
-                '{' => { stack.push(c); None },
-                '}' => { Some(stack.pop() == Some('{')) },
-                _ => panic!()
+                '(' => {
+                    stack.push(c);
+                    None
+                }
+                ')' => Some(stack.pop() == Some('(')),
+                '[' => {
+                    stack.push(c);
+                    None
+                }
+                ']' => Some(stack.pop() == Some('[')),
+                '{' => {
+                    stack.push(c);
+                    None
+                }
+                '}' => Some(stack.pop() == Some('{')),
+                _ => panic!(),
             };
-            if sub_valid.is_some() && sub_valid.unwrap() == false { return false }
+            if sub_valid.is_some() && sub_valid.unwrap() == false {
+                return false;
+            }
         }
         stack.len() == 0
     }

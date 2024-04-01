@@ -1,21 +1,23 @@
 # https://leetcode.com/problems/min-cost-climbing-stairs/
 
-from typing import List
+from __future__ import annotations
+
 
 class Solution:
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
+    def minCostClimbingStairs(self, cost: list[int]) -> int:
         n = len(cost)
-        costFromStep = [0] * (n + 1)
-        costFromStep[-1] = 0
-        costFromStep[-2] = cost[-1]
-        costFromStep[-3] = cost[-2]
+        cost_from_step = [0] * (n + 1)
+        cost_from_step[-1] = 0
+        cost_from_step[-2] = cost[-1]
+        cost_from_step[-3] = cost[-2]
 
-        for i in range(n-3, -1, -1):
-            costFromStep[i] = cost[i] + min(costFromStep[i+1], costFromStep[i+2])
+        for i in range(n - 3, -1, -1):
+            cost_from_step[i] = cost[i] + min(
+                cost_from_step[i + 1],
+                cost_from_step[i + 2],
+            )
 
-        return min(costFromStep[0], costFromStep[1])
-        
+        return min(cost_from_step[0], cost_from_step[1])
 
 
-Solution().minCostClimbingStairs([1,100,1,1,1,100,1,1,100,1])
-
+Solution().minCostClimbingStairs([1, 100, 1, 1, 1, 100, 1, 1, 100, 1])

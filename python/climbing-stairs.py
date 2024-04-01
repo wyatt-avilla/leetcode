@@ -3,16 +3,15 @@
 from functools import lru_cache
 
 
-class Solution():
-
+class Solution:
     @lru_cache(maxsize=45)
-    def climbStairs(self, currentStep: int) -> int:
-        if currentStep == 0:
+    def climbStairs(self, current_step: int) -> int:
+        if current_step == 0:
             return 1
-        if currentStep < 0:
+        if current_step < 0:
             return 0
 
-        return self.climbStairs(currentStep-1) + self.climbStairs(currentStep-2)
+        return self.climbStairs(current_step - 1) + self.climbStairs(current_step - 2)
 
 
 print(f"steps taken: {Solution().climbStairs(38)}")

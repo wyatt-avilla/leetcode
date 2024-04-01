@@ -1,22 +1,19 @@
 # https://leetcode.com/problems/group-anagrams/
 
-from typing import List, Tuple, Dict, FrozenSet
+from __future__ import annotations
 
 
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        dictStrs: Dict[FrozenSet[Tuple[str, int]], List[str]] = dict()
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+        dict_strs: dict[frozenset[tuple[str, int]], list[str]] = {}
         for word in strs:
-            letterCounts = frozenset((char, word.count(char)) for char in word)
-            if letterCounts in dictStrs:
-                dictStrs[letterCounts].append(word)
+            letter_counts = frozenset((char, word.count(char)) for char in word)
+            if letter_counts in dict_strs:
+                dict_strs[letter_counts].append(word)
             else:
-                dictStrs[letterCounts] = [word]
+                dict_strs[letter_counts] = [word]
 
-        return [words for words in dictStrs.values()]
-        
-
+        return list(dict_strs.values())
 
 
-
-print(Solution().groupAnagrams(["eat","tea","tan","ate","nat","bat"]))
+print(Solution().groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))

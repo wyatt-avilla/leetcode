@@ -4,10 +4,7 @@ class Solution:
         for _ in range(abs(n)):
             exp *= x
 
-        return exp if n > 0 else 1/abs(exp)
-
-
-
+        return exp if n > 0 else 1 / abs(exp)
 
 
 print(Solution().myPow(0.00001, 2147483647))

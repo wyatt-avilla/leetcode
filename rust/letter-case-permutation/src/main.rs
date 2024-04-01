@@ -13,12 +13,16 @@ impl Solution {
             let mut current_perm: Vec<char> = Vec::new();
             let mut case_representations = bin_str.chars();
 
-            for c in s.chars().map(|c| c.to_ascii_lowercase() ) {
+            for c in s.chars().map(|c| c.to_ascii_lowercase()) {
                 if c.is_numeric() {
                     current_perm.push(c);
                     continue;
                 }
-                current_perm.push(if case_representations.next().unwrap() == '0' { c } else { c.to_ascii_uppercase() })
+                current_perm.push(if case_representations.next().unwrap() == '0' {
+                    c
+                } else {
+                    c.to_ascii_uppercase()
+                })
             }
 
             all_possible.push(current_perm.iter().collect());
@@ -70,7 +74,7 @@ mod tests {
         expected.sort();
         assert_eq!(expected, result);
     }
-    
+
     // Test case 4
     #[test]
     fn case4() {

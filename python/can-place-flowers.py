@@ -1,18 +1,19 @@
 # https://leetcode.com/problems/can-place-flowers/
 
+from __future__ import annotations
+
 from math import ceil
-from typing import List
 
 
 class Solution:
-    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+    def canPlaceFlowers(self, flowerbed: list[int], n: int) -> bool:
         bed_len: int = len(flowerbed)
         valid_spaces: int = 0
 
-        one_idxs: List[int] = [i for i, v in enumerate(flowerbed) if v == 1]
+        one_idxs: list[int] = [i for i, v in enumerate(flowerbed) if v == 1]
         for i in range(len(one_idxs) - 1):
             consecutive_zeros: int = one_idxs[i + 1] - one_idxs[i] - 1
-            valid_spaces += ((consecutive_zeros // 2)) if consecutive_zeros > 0 else 0
+            valid_spaces += (consecutive_zeros // 2) if consecutive_zeros > 0 else 0
             valid_spaces -= 1 if consecutive_zeros % 2 == 0 else 0
 
         if len(one_idxs) == 0:

@@ -1,9 +1,10 @@
 // https://leetcode.com/problems/reverse-linked-list/
 
-#include <stdbool.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "SLL.h"
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct ListNode* traverseList(struct ListNode* prev, struct ListNode* curr) {
     if (!curr) {
@@ -21,8 +22,6 @@ struct ListNode* reverseList(struct ListNode* head) {
 
     printf("returned %d\n", newHead->val);
     return newHead;
-
-    
 }
 
 int main() {
@@ -44,6 +43,4 @@ int main() {
         free(newHead);
         newHead = t;
     }
-    
-    
 }

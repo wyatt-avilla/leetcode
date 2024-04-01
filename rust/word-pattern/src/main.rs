@@ -10,19 +10,27 @@ impl Solution {
         let chars = pattern.chars();
         let words = s.split_whitespace();
 
-        if chars.clone().count() != words.clone().count() { return false } // this feels gross
+        if chars.clone().count() != words.clone().count() {
+            return false;
+        } // this feels gross
 
         let mut char_word_assoc: HashMap<char, &str> = HashMap::new();
         for (char, word) in chars.zip(words) {
             match char_word_assoc.insert(char, word) {
-                Some(prev_word) => if prev_word != word { return false }
-                None => ()
+                Some(prev_word) => {
+                    if prev_word != word {
+                        return false;
+                    }
+                }
+                None => (),
             }
         }
 
         let mut unique_words: HashSet<&str> = HashSet::new();
         for word in char_word_assoc.values() {
-            if !unique_words.insert(word) { return false } // like bruh what is THIS
+            if !unique_words.insert(word) {
+                return false;
+            } // like bruh what is THIS
         }
         return true;
     }

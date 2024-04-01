@@ -1,8 +1,9 @@
-// https://leetcode.com/problems/find-words-containing-character/ 
+// https://leetcode.com/problems/find-words-containing-character/
 
 pub struct Solution;
 
-impl Solution { // first rust program !
+impl Solution {
+    // first rust program !
     pub fn find_words_containing(words: Vec<String>, x: char) -> Vec<i32> {
         let mut found_char_indices = Vec::new();
         let x = x.to_string();
@@ -33,10 +34,7 @@ mod tests {
     // Test case 1
     #[test]
     fn case1() {
-        let words = vec![
-            String::from("leet"),
-            String::from("code"),
-        ];
+        let words = vec![String::from("leet"), String::from("code")];
         let result = Solution::find_words_containing(words, 'e');
         assert_eq_vec(result, vec![0, 1]);
     }

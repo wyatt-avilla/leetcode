@@ -21,7 +21,7 @@ mod tests {
     // Test case 1
     #[test]
     fn case1() {
-        let nums = vec![3,2,4,6];
+        let nums = vec![3, 2, 4, 6];
         let result = Solution::maximum_xor(nums);
         assert_eq!(result, 7);
     }
@@ -29,7 +29,7 @@ mod tests {
     // Test case 2
     #[test]
     fn case2() {
-        let nums = vec![1,2,3,9,2];
+        let nums = vec![1, 2, 3, 9, 2];
         let result = Solution::maximum_xor(nums);
         assert_eq!(result, 11);
     }

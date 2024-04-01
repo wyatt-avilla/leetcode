@@ -4,14 +4,15 @@ pub struct Solution;
 
 impl Solution {
     pub fn is_prefix_of_word(sentence: String, search_word: String) -> i32 {
-        sentence.split_whitespace()
+        sentence
+            .split_whitespace()
             .enumerate()
             .filter(|(_, w)| w.starts_with(&search_word)) // .position() would've been better here
-            .map(|(i, _)| (i+1) as i32)
+            .map(|(i, _)| (i + 1) as i32)
             .next()
             .unwrap_or(-1)
-        }
     }
+}
 
 fn main() {
     println!("main executed")

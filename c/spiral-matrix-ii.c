@@ -1,24 +1,17 @@
 // https://leetcode.com/problems/spiral-matrix-ii/
 
 #include <stdbool.h>
-#include <stdlib.h>
 #include <stdio.h>
-#include <assert.h>
-#include <string.h>
+#include <stdlib.h>
 
-/**
- * return an array of arrays of size *returnSize
- * the sizes of the arrays are returned as *returnColumSizes array
- * note: both returned array and *columnSizes array must be allocated
-*/
-int **generateMatrix(int n, int* returnSize, int** returnColumnSizes) {
-    
+int** generateMatrix(int n, int* returnSize, int** returnColumnSizes) {
+
     *returnSize = n;
-    *returnColumnSizes = (int*)calloc(n, sizeof(int));
+    *returnColumnSizes = (int*) calloc(n, sizeof(int));
 
-    int** mat = (int**)calloc(n, sizeof(int*));
+    int** mat = (int**) calloc(n, sizeof(int*));
     for (int i = 0; i < n; i++) {
-        mat[i] = (int*)calloc(n, sizeof(int));
+        mat[i] = (int*) calloc(n, sizeof(int));
         (*returnColumnSizes)[i] = n;
     }
 
@@ -31,31 +24,31 @@ int **generateMatrix(int n, int* returnSize, int** returnColumnSizes) {
 
     while (rotationCount < 4) {
         currentDirection %= 4;
-        if (rowI < 0) {             // collided w/ top border
+        if (rowI < 0) { // collided w/ top border
             currentDirection++;
             rotationCount++;
             rowI++;
             colJ--;
             continue;
-        } else if (colJ < 0) {      // collided w/ left border
+        } else if (colJ < 0) { // collided w/ left border
             currentDirection++;
             rotationCount++;
             colJ++;
             rowI--;
             continue;
-        } else if (rowI >= n) {     // collided w/ bottom border
+        } else if (rowI >= n) { // collided w/ bottom border
             currentDirection++;
             rotationCount++;
             rowI--;
             colJ--;
             continue;
-        } else if (colJ >= n) {     // collided w/ right border
+        } else if (colJ >= n) { // collided w/ right border
             currentDirection++;
             rotationCount++;
             colJ--;
             rowI++;
             continue;
-        } else if (mat[rowI][colJ] != 0) {  // avoid retracing
+        } else if (mat[rowI][colJ] != 0) { // avoid retracing
             if (currentDirection == Right) {
                 colJ--;
                 rowI++;
@@ -93,9 +86,9 @@ int main() {
 
     int n = 5;
     int cols = n;
-    int *rows;
+    int* rows;
 
-    int **matrix = generateMatrix(n, &cols, &rows);
+    int** matrix = generateMatrix(n, &cols, &rows);
 
     for (int i = 0; i < n; i++) {
         printf("[");
@@ -104,13 +97,11 @@ int main() {
         }
         printf(" ]\n");
     }
-    printf("%d %d %d\n", n, cols, *rows );
-    
+    printf("%d %d %d\n", n, cols, *rows);
+
     for (int i = 0; i < n; i++) {
         free(matrix[i]);
     }
     free(matrix);
     free(rows);
-
-
 }

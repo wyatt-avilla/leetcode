@@ -1,28 +1,27 @@
-from typing import List
-"""unfinished at the moment. i just viewed the solution, and figured id attempt to solve this again when the solution isnt so fresh in my mind"""
+# https://leetcode.com/problems/elimination-game/
+
+from __future__ import annotations
 
 
 class Solution:
     def lastRemaining(self, n: int) -> int:
-        arr = [num for num in range(1, n+1)]
+        arr = list(range(1, n + 1))
         return self.traverse(arr, "left")
 
-    def traverse(self, arr: List, startingFrom: str) -> int:
-        currentLen = len(arr)
-        newArr = [] 
-        if currentLen == 1:
+    def traverse(self, arr: list, starting_from: str) -> int:
+        current_len = len(arr)
+        new_arr = []
+        if current_len == 1:
             return arr[0]
 
-        if currentLen % 2 == 1 or startingFrom == "left":
-            newArr = [arr[i] for i in range(currentLen) if i % 2 == 1]
-        elif startingFrom == "right":
-            newArr = [arr[i] for i in range(currentLen) if i % 2 == 0]
+        if current_len % 2 == 1 or starting_from == "left":
+            new_arr = [arr[i] for i in range(current_len) if i % 2 == 1]
+        elif starting_from == "right":
+            new_arr = [arr[i] for i in range(current_len) if i % 2 == 0]
 
-        startingFrom = "right" if startingFrom == "left" else "left"
-        return self.traverse(newArr, startingFrom)
+        starting_from = "right" if starting_from == "left" else "left"
+        return self.traverse(new_arr, starting_from)
 
-
-# print(Solution().lastRemaining(5))
 
 for i in range(1, 30):
     print(f"{i:2} : {Solution().lastRemaining(i)}")

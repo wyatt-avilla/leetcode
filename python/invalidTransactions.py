@@ -1,67 +1,100 @@
-from typing import List, Dict, Tuple
+from __future__ import annotations
 
 
 class Solution:
-    def invalidTransactions(self, transactions: List[str]) -> List[str]:
-        personTransactions: Dict = {}
-        possiblyInvalids: List[str] = []
+    def invalidTransactions(self, transactions: list[str]) -> list[str]:
+        person_transactions: dict = {}
+        possibly_invalids: list[str] = []
         for transaction in transactions:
             name, time, amount, city = transaction.split(",")
             time = int(time)
             amount = int(amount)
             if amount > 1000:
-                possiblyInvalids.append(transaction)
-            elif name not in personTransactions.keys():
-                personTransactions.update({name: [tuple([time, amount, city])]})
+                possibly_invalids.append(transaction)
+            elif name not in person_transactions:
+                person_transactions.update({name: [(time, amount, city)]})
             else:
-                sameNameDiffCity = set()
-                for prevTransaction in personTransactions[name]:
-                    if abs(prevTransaction[0] - time) <= 60 and prevTransaction[2] != city:
-                        sameNameDiffCity.add(transaction)
-                        sameNameDiffCity.add(name + "," + ",".join(str(data) for data in prevTransaction))
-                for transaction in sameNameDiffCity:
-                    possiblyInvalids.append(transaction)
-                personTransactions[name].append(tuple([time, amount, city]))
-                
-        return (possiblyInvalids)
+                same_name_diff_city = set()
+                for prev_transaction in person_transactions[name]:
+                    if (
+                        abs(prev_transaction[0] - time) <= 60
+                        and prev_transaction[2] != city
+                    ):
+                        same_name_diff_city.add(transaction)
+                        same_name_diff_city.add(
+                            name
+                            + ","
+                            + ",".join(str(data) for data in prev_transaction),
+                        )
+                for transaction in same_name_diff_city:
+                    possibly_invalids.append(transaction)
+                person_transactions[name].append((time, amount, city))
 
-def checkTests(testPairs: List[Tuple[List[str], List[str]]]):
-    for case in testPairs:
+        return possibly_invalids
+
+
+def check_tests(test_pairs: list[tuple[list[str], list[str]]]) -> None:
+    for case in test_pairs:
         result = Solution().invalidTransactions(case[0])
         expected = case[1]
-        transactionsInResult = {trans: result.count(trans) for trans in result}
-        transactionsInExpected = {trans: expected.count(trans) for trans in expected}
-        if transactionsInResult != transactionsInExpected:
+        transaction_in_result = {trans: result.count(trans) for trans in result}
+        transactions_in_expected = {trans: expected.count(trans) for trans in expected}
+        if transaction_in_result != transactions_in_expected:
             print("---------------- K - R - S")
-            allKeys = set([key for key in transactionsInResult.keys()] + [key for key in transactionsInExpected.keys()])
-            for key in allKeys:
-                print(f"{key} -- {transactionsInResult[key] if key in transactionsInResult.keys() else None} - {transactionsInExpected[key] if key in transactionsInExpected.keys() else None}")
+            all_keys = set(
+                list(transaction_in_result) + list(transactions_in_expected),
+            )
+            for key in all_keys:
+                print(
+                    f"{key} -- {transaction_in_result.get(key)} - {transactions_in_expected.get(key)}",
+                )
             print(case[0])
             print("----------")
             continue
         print(f"{expected} passed")
 
 
+test_cases = [  # input, expected
+    (
+        ["alice,20,800,mtv", "alice,50,100,beijing"],
+        ["alice,20,800,mtv", "alice,50,100,beijing"],
+    ),
+    (["alice,20,800,mtv", "alice,50,1200,mtv"], ["alice,50,1200,mtv"]),
+    (["alice,20,800,mtv", "bob,50,1200,mtv"], ["bob,50,1200,mtv"]),
+    (
+        ["alice,20,1220,mtv", "alice,20,1220,mtv"],
+        ["alice,20,1220,mtv", "alice,20,1220,mtv"],
+    ),
+    (
+        ["alice,20,800,mtv", "alice,50,100,mtv", "alice,51,100,frankfurt"],
+        ["alice,20,800,mtv", "alice,50,100,mtv", "alice,51,100,frankfurt"],
+    ),
+    (["alice,20,800,mtv", "bob,50,1200,mtv"], ["bob,50,1200,mtv"]),
+    (
+        [
+            "alice,20,800,mtv",
+            "bob,50,1200,mtv",
+            "alice,20,800,mtv",
+            "alice,50,1200,mtv",
+            "alice,20,800,mtv",
+            "alice,50,100,beijing",
+        ],
+        [
+            "alice,20,800,mtv",
+            "bob,50,1200,mtv",
+            "alice,20,800,mtv",
+            "alice,50,1200,mtv",
+            "alice,20,800,mtv",
+            "alice,50,100,beijing",
+        ],
+    ),
+]
+
+check_tests(test_cases)
 
 
-
-
-testCases = [ # input, expected
-        (["alice,20,800,mtv","alice,50,100,beijing"], ["alice,20,800,mtv","alice,50,100,beijing"]),
-        (["alice,20,800,mtv","alice,50,1200,mtv"], ["alice,50,1200,mtv"]),
-        (["alice,20,800,mtv","bob,50,1200,mtv"], ["bob,50,1200,mtv"]),
-        (["alice,20,1220,mtv","alice,20,1220,mtv"], ["alice,20,1220,mtv","alice,20,1220,mtv"]),
-        (["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"], ["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"]),
-        (["alice,20,800,mtv","bob,50,1200,mtv"], ["bob,50,1200,mtv"]),
-        (["alice,20,800,mtv","bob,50,1200,mtv","alice,20,800,mtv","alice,50,1200,mtv","alice,20,800,mtv","alice,50,100,beijing"], ["alice,20,800,mtv","bob,50,1200,mtv","alice,20,800,mtv","alice,50,1200,mtv","alice,20,800,mtv","alice,50,100,beijing"])
-            ]
-
-checkTests(testCases)
-
-
-#assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,100,beijing"])) == set(["alice,20,800,mtv","alice,50,100,beijing"])
-#assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,1200,mtv"])) == set(["alice,50,1200,mtv"])
-#assert set(Solution().invalidTransactions(["alice,20,800,mtv","bob,50,1200,mtv"])) == set(["bob,50,1200,mtv"])
-#assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])) == set(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])
-#assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])) == set(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])
-
+# assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,100,beijing"])) == set(["alice,20,800,mtv","alice,50,100,beijing"])
+# assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,1200,mtv"])) == set(["alice,50,1200,mtv"])
+# assert set(Solution().invalidTransactions(["alice,20,800,mtv","bob,50,1200,mtv"])) == set(["bob,50,1200,mtv"])
+# assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])) == set(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])
+# assert set(Solution().invalidTransactions(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])) == set(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])

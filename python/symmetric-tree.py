@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/symmetric-tree/
 
 from __future__ import annotations
+
 from data_structures import TreeNode
 
 

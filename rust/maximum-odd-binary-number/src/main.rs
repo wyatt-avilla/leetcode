@@ -8,7 +8,7 @@ impl Solution {
         let total_ones = s.chars().filter(|&c| c == '1').count();
         let total_zeros = s.len() - total_ones;
 
-        let left_ones: String = std::iter::repeat("1").take(total_ones-1).collect();
+        let left_ones: String = std::iter::repeat("1").take(total_ones - 1).collect();
         let zeros: String = std::iter::repeat("0").take(total_zeros).collect();
 
         max_odd_bin.push_str(&left_ones);

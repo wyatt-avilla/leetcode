@@ -1,23 +1,21 @@
 # https://leetcode.com/problems/car-pooling/
 
-from typing import List
+from __future__ import annotations
 
 
 class Solution:
-    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
-        occupancyPerMile = [0 for mile in range(1001)]
-        maxMile = 0
+    def carPooling(self, trips: list[list[int]], capacity: int) -> bool:
+        occupancy_per_mile = [0 for mile in range(1001)]
+        max_mile = 0
 
         for trip in trips:
-            occupancyPerMile[trip[1]:trip[2]] = [mile + trip[0] for mile in occupancyPerMile[trip[1]:trip[2]]]
-            maxMile = max(trip[2], maxMile)
+            occupancy_per_mile[trip[1] : trip[2]] = [
+                mile + trip[0] for mile in occupancy_per_mile[trip[1] : trip[2]]
+            ]
+            max_mile = max(trip[2], max_mile)
 
-        for i in range(maxMile):
-            if occupancyPerMile[i] > capacity:
-                return False
-
-        return True
+        return all(occupancy_per_mile[i] <= capacity for i in range(max_mile))
 
 
-tt = [[2,1,5], [3,3,7]]
+tt = [[2, 1, 5], [3, 3, 7]]
 Solution().carPooling(tt, 4)

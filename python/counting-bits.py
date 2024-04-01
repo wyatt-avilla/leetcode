@@ -1,49 +1,47 @@
 # https://leetcode.com/problems/counting-bits/
 
-from typing import List
+from __future__ import annotations
+
 
 class Solution:
-    def countBits(self, n: int) -> List[int]:
-        def power_generator():
+    def countBits(self, n: int) -> list[int]:
+        def power_generator() -> int:
             n = 1
             while True:
                 yield 2**n
                 n += 1
 
-        bitRepresentation = [0] * (n + 1)
+        bit_representation = [0] * (n + 1)
         if n > 0:
-            bitRepresentation[1] = 1
+            bit_representation[1] = 1
 
-        rangeGenerator = power_generator()
-        nextRangeStartIndex = next(rangeGenerator)
+        range_generator = power_generator()
+        next_range_start_index = next(range_generator)
 
         i = 2
         while i < (n + 1):
-            if i == nextRangeStartIndex:
-                for j in range(i//2, i):
-                    bitRepresentation[i] = bitRepresentation[j]
+            if i == next_range_start_index:
+                for j in range(i // 2, i):
+                    bit_representation[i] = bit_representation[j]
 
                     if i >= n:
                         break
                     i += 1
-                nextRangeStartIndex = next(rangeGenerator)
+                next_range_start_index = next(range_generator)
                 continue
 
+            binary_val = i
+            bit_count = 0
+            while binary_val > 0:
+                if binary_val & 1 == 1:
+                    bit_count += 1
+                binary_val = binary_val >> 1
 
-            binaryVal = i
-            bitCount = 0
-            while binaryVal > 0:
-                if binaryVal & 1 == 1:
-                    bitCount += 1
-                binaryVal = binaryVal >> 1
-
-            bitRepresentation[i] = bitCount
+            bit_representation[i] = bit_count
 
             i += 1
 
-
-
-        return bitRepresentation
+        return bit_representation
 
 
 print(Solution().countBits(20))

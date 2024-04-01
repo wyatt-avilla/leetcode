@@ -1,28 +1,32 @@
 # https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
 
+from __future__ import annotations
+
 from enum import Enum
-from typing import List, Optional
+
 from data_structures import TreeNode
+
 
 class TraversalType(Enum):
     INORDER = 1
     POSTORDER = 2
 
+
 class Solution:
-    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+    def buildTree(self, inorder: list[int], postorder: list[int]) -> [TreeNode | None]:
         if len(inorder) == 0 or len(postorder) == 0:
             return None
 
         root: TreeNode = TreeNode(postorder[-1])
         root_idx: int = inorder.index(postorder[-1])
 
-        left_subtree_inorder: List[int] = inorder[:root_idx]
-        right_subtree_inorder: List[int] = inorder[root_idx + 1 :]
+        left_subtree_inorder: list[int] = inorder[:root_idx]
+        right_subtree_inorder: list[int] = inorder[root_idx + 1 :]
 
         postorder.pop()
 
-        left_subtree_postorder: List[int] = postorder[: len(left_subtree_inorder)]
-        right_subtree_postorder: List[int] = postorder[-len(right_subtree_inorder) :]
+        left_subtree_postorder: list[int] = postorder[: len(left_subtree_inorder)]
+        right_subtree_postorder: list[int] = postorder[-len(right_subtree_inorder) :]
 
         root.left = self.buildTree(left_subtree_inorder, left_subtree_postorder)
         root.right = self.buildTree(right_subtree_inorder, right_subtree_postorder)
@@ -30,22 +34,21 @@ class Solution:
         return root
 
 
-def tree_bfs_vals(root: Optional[TreeNode]) -> List[Optional[int]]:
-    nodes: List[Optional[TreeNode]] = [root]
-    node_vals: List[Optional[int]] = []
+def tree_bfs_vals(root: [TreeNode | None]) -> list[int | None]:
+    nodes: list[[TreeNode | None]] = [root]
+    node_vals: list[int | None] = []
     for node in nodes:
         if node:
             node_vals.append(node.val)
-            nodes.append(node.left)
-            nodes.append(node.right)
+            nodes.extend((node.left, node.right))
         else:
             node_vals.append(None)
 
     return node_vals
 
 
-def tree_order_vals(root: Optional[TreeNode], traversal: TraversalType) -> List[int]:
-    order: List[int] = []
+def tree_order_vals(root: [TreeNode | None], traversal: TraversalType) -> list[int]:
+    order: list[int] = []
 
     if root is None:
         return order

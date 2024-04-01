@@ -3,12 +3,12 @@
 #include <stdbool.h>
 #include <string.h>
 
-bool canConstruct(char * ransomNote, char * magazine) {
+bool canConstruct(char* ransomNote, char* magazine) {
     int notelen = strlen(ransomNote);
     int maglen = strlen(magazine);
 
-    int noteletters[26] = { };
-    int magletters[26] = { };
+    int noteletters[26] = {};
+    int magletters[26] = {};
 
     int asciival;
     for (int i = 0; i < notelen; i++) {
@@ -19,11 +19,11 @@ bool canConstruct(char * ransomNote, char * magazine) {
         asciival = magazine[i] - 97;
         magletters[asciival]++;
     }
-   
+
     for (int i = 0; i < 26; i++) {
         if (noteletters[i] > magletters[i]) {
             return false;
         }
-    }    
+    }
     return true;
 }

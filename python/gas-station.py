@@ -1,35 +1,32 @@
 # https://leetcode.com/problems/gas-station/
 
-from typing import List
+from __future__ import annotations
 
 
 class Solution:
-    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+    def canCompleteCircuit(self, gas: list[int], cost: list[int]) -> int:
         n = len(gas)
-        greedyIndices = [0] * n
+        greedy_indices = [0] * n
         for index in range(n):
-            greedyIndices[index] = gas[index] - cost[index]
-        sorted_indices = sorted(range(n), key=lambda i: greedyIndices[i])
+            greedy_indices[index] = gas[index] - cost[index]
+        sorted_indices = sorted(range(n), key=lambda i: greedy_indices[i])
         sorted_indices.reverse()
 
         for index in sorted_indices:
             if gas[index] > 0:
-                tankCapacity = 0
+                tank_capacity = 0
                 for j in range(index, index + n + 1):
-                    currentIndex = j % n
+                    current_index = j % n
                     if j > index:
-                        if currentIndex == index and tankCapacity >= 0:
+                        if current_index == index and tank_capacity >= 0:
                             return index
-                        if tankCapacity <= 0:
+                        if tank_capacity <= 0:
                             break
 
-                    tankCapacity += gas[currentIndex]
-                    tankCapacity -= cost[currentIndex]
+                    tank_capacity += gas[current_index]
+                    tank_capacity -= cost[current_index]
 
         return -1
-
-
-
 
 
 assert Solution().canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]) == 3

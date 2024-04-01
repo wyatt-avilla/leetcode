@@ -1,37 +1,32 @@
 # https://leetcode.com/problems/minimum-size-subarray-sum/
 
-from typing import List
+from __future__ import annotations
 
 
 class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        numsLen = len(nums)
+    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+        nums_len = len(nums)
         best = 100001
-        start = end = currentSum = 0
-        while start < numsLen:
-            if currentSum < target and end < numsLen:
-                currentSum += nums[end]
+        start = end = current_sum = 0
+        while start < nums_len:
+            if current_sum < target and end < nums_len:
+                current_sum += nums[end]
                 end += 1
-            elif currentSum >= target:
+            elif current_sum >= target:
                 best = min(end - start, best)
-                currentSum -= nums[start]
+                current_sum -= nums[start]
                 start += 1
             else:
-                currentSum -= nums[start]
+                current_sum -= nums[start]
                 start += 1
         return best if best < 100001 else 0
 
 
-
-                
-
-
-
 cases = [
-        (7, [2,3,1,2,4,3], 2),
-        (4, [1,4,4], 1),
-        (11, [1,1,1,1,1,1,1,1], 0),
-        ]
+    (7, [2, 3, 1, 2, 4, 3], 2),
+    (4, [1, 4, 4], 1),
+    (11, [1, 1, 1, 1, 1, 1, 1, 1], 0),
+]
 
 for case in cases:
     target, nums, exp = case

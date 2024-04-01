@@ -1,13 +1,14 @@
 # https://leetcode.com/problems/leaf-similar-trees
 
-from typing import List, Optional
+from __future__ import annotations
+
 from data_structures import TreeNode
 
 
 class Solution:
-    def leafSimilar(self, root: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        def get_lvs(root: Optional[TreeNode]) -> List[int]:
-            lvs: List[int] = []
+    def leafSimilar(self, root: [TreeNode | None], root2: [TreeNode | None]) -> bool:
+        def get_lvs(root: [TreeNode | None]) -> list[int]:
+            lvs: list[int] = []
 
             if root is None:
                 return lvs

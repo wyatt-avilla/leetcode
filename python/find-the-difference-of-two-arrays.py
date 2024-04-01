@@ -1,10 +1,10 @@
 # https://leetcode.com/problems/find-the-difference-of-two-arrays
 
-from typing import List
+from __future__ import annotations
 
 
 class Solution:
-    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+    def findDifference(self, nums1: list[int], nums2: list[int]) -> list[list[int]]:
         nums1_set = set(nums1)
         nums2_set = set(nums2)
 

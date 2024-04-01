@@ -1,25 +1,22 @@
 # https://leetcode.com/problems/binary-tree-preorder-traversal/
 
-from typing import List
-from typing import Optional
+from __future__ import annotations
+
 from data_structures import TreeNode
 
 
 class Solution:
-    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        def DFS(root: TreeNode, pathList: List):
+    def preorderTraversal(self, root: [TreeNode | None]) -> list[int]:
+        def DFS(root: TreeNode, path_list: list) -> None:
             if root is None:
                 return
-            pathList.append(root.val)
-            (DFS(root.left, pathList))
-            (DFS(root.right, pathList))
+            path_list.append(root.val)
+            DFS(root.left, path_list)
+            DFS(root.right, path_list)
 
-        preorderList = []
-        DFS(root, preorderList)
-        return preorderList
-
-
-
+        preorder_list = []
+        DFS(root, preorder_list)
+        return preorder_list
 
 
 t = TreeNode(1)

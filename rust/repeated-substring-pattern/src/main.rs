@@ -5,8 +5,9 @@ pub struct Solution;
 impl Solution {
     pub fn repeated_substring_pattern(s: String) -> bool {
         let s_len = s.len();
-        (1..s_len).filter(|&i| s_len % i == 0)
-            .any(|f| &s[0..f].repeat(s_len/f) == &s)
+        (1..s_len)
+            .filter(|&i| s_len % i == 0)
+            .any(|f| &s[0..f].repeat(s_len / f) == &s)
     }
 }
 

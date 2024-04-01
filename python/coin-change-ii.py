@@ -1,37 +1,34 @@
 # https://leetcode.com/problems/coin-change-ii/
 
-from typing import List
+from __future__ import annotations
 
 
 class Solution:
-    def change(self, amount: int, coins: List[int]) -> int:
-        coinsLen = len(coins)
-        tableLen = amount + 1
-        table: List[List[int]] = [[0 for _ in range(coinsLen)] for _ in range(tableLen)]
-        for i in range(coinsLen): # always 1 way to make zero
+    def change(self, amount: int, coins: list[int]) -> int:
+        coins_len = len(coins)
+        table_len = amount + 1
+        table: list[list[int]] = [
+            [0 for _ in range(coins_len)] for _ in range(table_len)
+        ]
+        for i in range(coins_len):  # always 1 way to make zero
             table[0][i] = 1
 
-        for i in range(1, tableLen):
-            currentCell = table[i]
+        for i in range(1, table_len):
+            current_cell = table[i]
             if i % coins[0] == 0:
-                currentCell[0] = 1
-            for j in range(1, coinsLen):
-                currentCoin = coins[j]
-                if currentCoin > i:
-                    currentCell[j] = currentCell[j-1]
+                current_cell[0] = 1
+            for j in range(1, coins_len):
+                current_coin = coins[j]
+                if current_coin > i:
+                    current_cell[j] = current_cell[j - 1]
                 else:
-                    currentCell[j] = currentCell[j-1] + table[i-coins[j]][j]
+                    current_cell[j] = current_cell[j - 1] + table[i - coins[j]][j]
 
-
-
-
-        for i in range(0, tableLen):
+        for i in range(table_len):
             print(f"{i} -> ( ", end="")
             for j in range(len(table[i])):
                 print(f"{coins[j]}:{table[i][j]} ", end="")
             print(")")
-
-
 
         return table[amount][-1]
 

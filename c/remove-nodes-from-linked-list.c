@@ -1,13 +1,14 @@
 // https://leetcode.com/problems/remove-nodes-from-linked-list/
 
-#include <stdbool.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "SLL.h"
 
-struct ListNode* deleteUntil(struct ListNode *head, int target) {
-    struct ListNode *headcpy = head;
-    struct ListNode *temp = NULL;
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct ListNode* deleteUntil(struct ListNode* head, int target) {
+    struct ListNode* headcpy = head;
+    struct ListNode* temp = NULL;
     while (headcpy) {
         if (headcpy->val == target) {
             head = headcpy;
@@ -20,7 +21,8 @@ struct ListNode* deleteUntil(struct ListNode *head, int target) {
     return head;
 }
 
-bool greaterAhead(struct ListNode* currentNode, int comparingAgainst, bool* isSorted, int *foundMax) {
+bool greaterAhead(struct ListNode* currentNode, int comparingAgainst,
+                  bool* isSorted, int* foundMax) {
     struct ListNode* currcpy = currentNode;
     *isSorted = true;
     while (currcpy->next) {
@@ -30,7 +32,7 @@ bool greaterAhead(struct ListNode* currentNode, int comparingAgainst, bool* isSo
         if (currcpy->next->val > comparingAgainst) {
             *foundMax = currcpy->next->val;
             printf("found! %d\n", *foundMax);
-            return true; 
+            return true;
         }
         currcpy = currcpy->next;
     }
@@ -38,21 +40,22 @@ bool greaterAhead(struct ListNode* currentNode, int comparingAgainst, bool* isSo
 }
 
 struct ListNode* removeNodes(struct ListNode* head) {
-    struct ListNode *retNode = head;
-    struct ListNode *currentNode = head;
-    struct ListNode *prevNode = NULL;
+    struct ListNode* retNode = head;
+    struct ListNode* currentNode = head;
+    struct ListNode* prevNode = NULL;
     bool isSorted = false;
     int currentMax = 0;
     while (currentNode) {
         if (isSorted) {
-            break; 
+            break;
         }
-        if (greaterAhead(currentNode, currentNode->val, &isSorted, &currentMax)) {
+        if (greaterAhead(currentNode, currentNode->val, &isSorted,
+                         &currentMax)) {
             currentNode = deleteUntil(currentNode, currentMax);
             if (!prevNode) {
                 retNode = currentNode;
             } else {
-                prevNode->next = currentNode; 
+                prevNode->next = currentNode;
             }
             continue;
         }
@@ -76,7 +79,6 @@ int main() {
     head->next->next->next->next->next = NULL;
 
 
-    
     struct ListNode* newHead = removeNodes(head);
 
     while (newHead) {
@@ -85,6 +87,4 @@ int main() {
         free(newHead);
         newHead = t;
     }
- 
 }
-

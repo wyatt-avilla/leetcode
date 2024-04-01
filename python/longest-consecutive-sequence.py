@@ -1,27 +1,25 @@
 # https://leetcode.com/problems/longest-consecutive-sequence/
 
-from typing import List
+from __future__ import annotations
+
+from typing import list
 
 
 class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
-        sortedNums = sorted(set(nums))
-        numsLen = len(sortedNums)
-        longestSequence = 0
-        currentSequence = 1
-        for i in range(numsLen - 1):
-            if sortedNums[i+1] == (sortedNums[i] + 1):
-                currentSequence += 1
+    def longestConsecutive(self, nums: list[int]) -> int:
+        sorted_nums = sorted(set(nums))
+        nums_len = len(sorted_nums)
+        longest_sequence = 0
+        current_sequence = 1
+        for i in range(nums_len - 1):
+            if sorted_nums[i + 1] == (sorted_nums[i] + 1):
+                current_sequence += 1
             else:
-                longestSequence = max(currentSequence, longestSequence)
-                currentSequence = 1
-        return max(currentSequence, longestSequence) if numsLen >= 1 else 0
-            
-            
-            
+                longest_sequence = max(current_sequence, longest_sequence)
+                current_sequence = 1
+        return max(current_sequence, longest_sequence) if nums_len >= 1 else 0
 
-            
 
-assert Solution().longestConsecutive([100,4,200,1,3,2]) == 4
-assert Solution().longestConsecutive([0,3,7,2,5,8,4,6,0,1]) == 9
+assert Solution().longestConsecutive([100, 4, 200, 1, 3, 2]) == 4
+assert Solution().longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]) == 9
 assert Solution().longestConsecutive([]) == 0
