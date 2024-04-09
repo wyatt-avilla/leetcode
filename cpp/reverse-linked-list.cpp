@@ -4,15 +4,6 @@
 
 #include <iostream>
 
-void print_list(ListNode* head) {
-    ListNode* cur = head;
-    while (cur != nullptr) {
-        std::cout << cur->val << " ";
-        cur = cur->next;
-    }
-    std::cout << std::endl;
-}
-
 class Solution {
   public:
     ListNode* reverseList(ListNode* head) {
@@ -49,9 +40,9 @@ int main(int argc, char* argv[]) {
     l->next->next = new ListNode;
     l->next->next->val = 3;
 
-    print_list(l);
+    std::cout << l << std::endl;
     solution.reverseList(l);
-    print_list(l);
+    std::cout << l << std::endl;
 
     return 0;
 }
