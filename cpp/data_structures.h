@@ -16,6 +16,21 @@ struct ListNode {
         }
     }
 
+    bool operator==(const ListNode& other) const {
+        const ListNode* currentThis = this;
+        const ListNode* currentOther = &other;
+
+        while (currentThis != nullptr && currentOther != nullptr) {
+            if (currentThis->val != currentOther->val) {
+                return false;
+            }
+            currentThis = currentThis->next;
+            currentOther = currentOther->next;
+        }
+
+        return currentThis == nullptr && currentOther == nullptr;
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const ListNode* node) {
         while (node != nullptr) {
             os << node->val;
