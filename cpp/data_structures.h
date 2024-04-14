@@ -10,10 +10,10 @@ struct ListNode {
         std::vector<int> vec(values);
         ListNode* current = this;
         for (auto it = vec.begin(); it != vec.end(); ++it) {
+            current->val = *it;
             if (it == vec.end() - 1) {
                 break;
             }
-            current->val = *it;
             current->next = new ListNode();
             current = current->next;
         }
