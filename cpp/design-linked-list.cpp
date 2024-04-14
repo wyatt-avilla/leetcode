@@ -36,6 +36,15 @@ class MyLinkedList {
         head = tail = nullptr;
         length = 0;
     }
+    ~MyLinkedList() {
+        ListNode* cur = head;
+        ListNode* next;
+        while (cur) {
+            next = cur->next;
+            delete cur;
+            cur = next;
+        }
+    };
 
     int get(int index) {
         if (index >= length) {
@@ -118,18 +127,21 @@ class MyLinkedList {
         }
 
         if (length == 1) {
+            delete head;
             head = tail = nullptr;
             length -= 1;
             return;
         }
         if (index == 0) {
             head = head->next;
+            delete head->prev;
             head->prev = nullptr;
             length -= 1;
             return;
         }
         if (index == (length - 1)) {
             tail = tail->prev;
+            delete tail->next;
             tail->next = nullptr;
             length -= 1;
             return;
@@ -151,7 +163,9 @@ class MyLinkedList {
 int main(void) {
     MyLinkedList list = MyLinkedList();
     list.addAtHead(6);
-    list.deleteAtIndex(0);
+    list.addAtHead(7);
+    list.addAtHead(8);
+    list.deleteAtIndex(2);
 
 
     std::cout << list << std::endl;
