@@ -6,7 +6,7 @@
 
 class Solution {
   public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverseList_iter(ListNode* head) {
         ListNode* new_head = nullptr;
         ListNode* cur = head;
 
@@ -25,6 +25,20 @@ class Solution {
         }
         return prev;
     }
+
+    ListNode* reverseList_rec(ListNode* prev, ListNode* curr) {
+        if (curr == nullptr) {
+            return prev;
+        }
+
+        ListNode* tail = reverseList_rec(curr, curr->next);
+        curr->next = prev;
+        return tail;
+    }
+
+    ListNode* reverseList(ListNode* head) {
+        return reverseList_rec(nullptr, head);
+    }
 };
 
 
@@ -41,8 +55,7 @@ int main(int argc, char* argv[]) {
     l->next->next->val = 3;
 
     std::cout << l << std::endl;
-    solution.reverseList(l);
-    std::cout << l << std::endl;
+    std::cout << solution.reverseList(l) << std::endl;
 
     return 0;
 }
