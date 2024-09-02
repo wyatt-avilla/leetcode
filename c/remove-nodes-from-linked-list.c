@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/remove-nodes-from-linked-list/
 
-#include "SLL.h"
+#include "data_structures.h"
 
 #include <stdbool.h>
 #include <stdio.h>

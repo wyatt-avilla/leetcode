@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/palindrome-linked-list/
 
-#include "SLL.h"
+#include "data_structures.h"
 
 #include <assert.h>
 #include <stdbool.h>

@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/add-two-numbers/
 
-#include "SLL.h"
+#include "data_structures.h"
 
 #include <stdbool.h>
 #include <stdio.h>

@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/middle-of-the-linked-list/
 
-#include "SLL.h"
+#include "data_structures.h"
 
 #include <stdio.h>
 #include <stdlib.h>
