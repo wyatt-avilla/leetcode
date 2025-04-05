@@ -1,15 +1,15 @@
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 struct SnapshotArray {
     snap_id: i32,
-    arr: Vec<HashMap<i32, i32>>,
+    arr: Vec<BTreeMap<i32, i32>>,
 }
 
 impl SnapshotArray {
     fn new(length: i32) -> Self {
         SnapshotArray {
             snap_id: 0,
-            arr: vec![HashMap::from([(0, 0)]); length as usize],
+            arr: vec![BTreeMap::from([(0, 0)]); length as usize],
         }
     }
 
@@ -24,12 +24,11 @@ impl SnapshotArray {
     }
 
     fn get(&self, index: i32, snap_id: i32) -> i32 {
-        for i in (0..=snap_id).rev() {
-            if let Some(v) = self.arr[index as usize].get(&i) {
-                return *v;
-            }
+        let map = &self.arr[index as usize];
+        match map.range(..=snap_id).next_back() {
+            Some((_, &v)) => v,
+            None => unreachable!("problem constraints"),
         }
-        unreachable!("problem contraints");
     }
 }
 
