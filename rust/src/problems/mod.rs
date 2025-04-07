@@ -16,3 +16,4 @@ pub mod goat_latin;
 pub mod intersection_of_two_arrays;
 pub mod jewels_and_stones;
 pub mod letter_case_permutation;
+pub mod maximum_odd_binary_number;

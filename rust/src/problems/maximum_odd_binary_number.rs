@@ -18,27 +18,19 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let s = String::from("010");
         let result = Solution::maximum_odd_binary_number(s);
         assert_eq!(result, String::from("001"));
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let s = String::from("0101");
         let result = Solution::maximum_odd_binary_number(s);
         assert_eq!(result, String::from("1001"));
