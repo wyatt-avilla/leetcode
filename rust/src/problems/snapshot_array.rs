@@ -34,20 +34,29 @@ impl SnapshotArray {
     }
 }
 
-fn main() {
-    let mut sa = SnapshotArray::new(3);
-    sa.set(0, 5);
-    assert!(sa.snap() == 0);
-    sa.set(0, 6);
-    assert!(sa.get(0, 0) == 5);
+#[cfg(test)]
+mod tests {
+    use super::SnapshotArray;
 
-    let mut sa2 = SnapshotArray::new(1);
-    sa2.set(0, 15);
-    sa2.snap();
-    sa2.snap();
-    sa2.snap();
-    assert!(sa2.get(0, 2) == 15);
-    sa2.snap();
-    sa2.snap();
-    assert!(sa2.get(0, 0) == 15);
+    #[test]
+    fn case_1() {
+        let mut sa = SnapshotArray::new(3);
+        sa.set(0, 5);
+        assert_eq!(sa.snap(), 0);
+        sa.set(0, 6);
+        assert_eq!(sa.get(0, 0), 5);
+    }
+
+    #[test]
+    fn case_2() {
+        let mut sa2 = SnapshotArray::new(1);
+        sa2.set(0, 15);
+        sa2.snap();
+        sa2.snap();
+        sa2.snap();
+        assert_eq!(sa2.get(0, 2), 15);
+        sa2.snap();
+        sa2.snap();
+        assert_eq!(sa2.get(0, 0), 15);
+    }
 }

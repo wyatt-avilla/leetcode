@@ -27,3 +27,4 @@ pub mod rle_iterator;
 pub mod rotate_string;
 pub mod single_number;
 pub mod smallest_number_in_infinite_set;
+pub mod snapshot_array;
