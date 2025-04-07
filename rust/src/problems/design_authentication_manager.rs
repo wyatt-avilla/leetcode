@@ -70,7 +70,7 @@ mod tests {
     }
 
     #[test]
-    fn case62() {
+    fn case2() {
         let mut am = AuthenticationManager::new(13);
         am.renew("ajvy".into(), 1);
         assert_eq!(am.count_unexpired_tokens(3), 0);
