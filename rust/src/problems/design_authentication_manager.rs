@@ -53,8 +53,6 @@ impl AuthenticationManager {
     }
 }
 
-fn main() {}
-
 #[cfg(test)]
 mod tests {
     use super::AuthenticationManager;
