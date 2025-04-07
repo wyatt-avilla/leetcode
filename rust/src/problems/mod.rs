@@ -22,3 +22,4 @@ pub mod missing_number;
 pub mod operations_on_tree;
 pub mod pascals_triangle_ii;
 pub mod product_of_the_last_k_numbers;
+pub mod repeated_substrings_pattern;

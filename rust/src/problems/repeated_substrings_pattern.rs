@@ -11,34 +11,25 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let s = String::from("abab");
-        assert_eq!(Solution::repeated_substring_pattern(s), true);
+        assert!(Solution::repeated_substring_pattern(s));
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let s = String::from("aba");
-        assert_eq!(Solution::repeated_substring_pattern(s), false);
+        assert!(!Solution::repeated_substring_pattern(s));
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let s = String::from("abcabcabcabc");
-        assert_eq!(Solution::repeated_substring_pattern(s), true);
+        assert!(Solution::repeated_substring_pattern(s));
     }
 }
