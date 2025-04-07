@@ -23,10 +23,6 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("Hello, world!");
-}
-
 #[cfg(test)]
 mod tests {
     use super::Solution;

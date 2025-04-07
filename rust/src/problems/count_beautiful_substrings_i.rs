@@ -75,13 +75,6 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed");
-    let s = "baeyh".to_string();
-    let k = 2;
-    let result = Solution::beautiful_substrings(s, k);
-}
-
 #[cfg(test)]
 mod tests {
     use super::Solution;
