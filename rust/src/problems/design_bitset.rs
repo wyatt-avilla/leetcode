@@ -56,16 +56,22 @@ impl Bitset {
     }
 }
 
-fn main() {
-    let mut bs = Bitset::new(5);
-    bs.fix(3);
-    bs.fix(1);
-    bs.flip();
-    assert!(!bs.all());
-    bs.unfix(0);
-    bs.flip();
-    assert!(bs.one());
-    bs.unfix(0);
-    assert!(bs.count() == 2);
-    assert!(bs.to_string() == "01010");
+#[cfg(test)]
+mod tests {
+    use super::Bitset;
+
+    #[test]
+    fn case1() {
+        let mut bs = Bitset::new(5);
+        bs.fix(3);
+        bs.fix(1);
+        bs.flip();
+        assert!(!bs.all());
+        bs.unfix(0);
+        bs.flip();
+        assert!(bs.one());
+        bs.unfix(0);
+        assert_eq!(bs.count(), 2);
+        assert_eq!(bs.to_string(), "01010");
+    }
 }

@@ -7,3 +7,4 @@ pub mod count_beautiful_substrings_i;
 pub mod count_good_triplets;
 pub mod design_a_stack_with_increment_operator;
 pub mod design_authentication_manager;
+pub mod design_bitset;
