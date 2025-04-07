@@ -16,19 +16,12 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let words = vec![
             "mass".to_string(),
             "as".to_string(),
@@ -39,17 +32,15 @@ mod tests {
         assert_eq!(Solution::string_matching(words), expected);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let words = vec!["leetcode".to_string(), "et".to_string(), "code".to_string()];
         let expected = vec!["et".to_string(), "code".to_string()];
         assert_eq!(Solution::string_matching(words), expected);
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let words = vec!["blue".to_string(), "green".to_string(), "bu".to_string()];
         let expected = Vec::<String>::new();
         assert_eq!(Solution::string_matching(words), expected);
