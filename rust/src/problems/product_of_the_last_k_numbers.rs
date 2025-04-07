@@ -25,14 +25,20 @@ impl ProductOfNumbers {
     }
 }
 
-fn main() {
-    let mut pom1 = ProductOfNumbers::new();
-    pom1.add(3);
-    pom1.add(0);
-    pom1.add(2);
-    pom1.add(5);
-    pom1.add(4);
-    assert!(pom1.get_product(2) == 20);
-    assert!(pom1.get_product(3) == 40);
-    assert!(pom1.get_product(4) == 0);
+#[cfg(test)]
+mod tests {
+    use super::ProductOfNumbers;
+
+    #[test]
+    fn case_1() {
+        let mut pom = ProductOfNumbers::new();
+        pom.add(3);
+        pom.add(0);
+        pom.add(2);
+        pom.add(5);
+        pom.add(4);
+        assert_eq!(pom.get_product(2), 20);
+        assert_eq!(pom.get_product(3), 40);
+        assert_eq!(pom.get_product(4), 0);
+    }
 }
