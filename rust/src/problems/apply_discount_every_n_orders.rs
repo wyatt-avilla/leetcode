@@ -38,16 +38,24 @@ impl Cashier {
     }
 }
 
-fn main() {
-    let mut cs = Cashier::new(
-        3,
-        50,
-        vec![1, 2, 3, 4, 5, 6, 7],
-        vec![100, 200, 300, 400, 300, 200, 100],
-    );
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-    assert!(cs.get_bill(vec![1, 2], vec![1, 2]) == 500.0);
-    assert!(cs.get_bill(vec![3, 7], vec![10, 10]) == 4000.0);
-    dbg!(cs.get_bill(vec![1, 2, 3, 4, 5, 6, 7], vec![1, 1, 1, 1, 1, 1, 1]));
-    assert!(cs.get_bill(vec![1, 2, 3, 4, 5, 6, 7], vec![1, 1, 1, 1, 1, 1, 1]) == 800.0);
+    #[test]
+    fn case_1() {
+        let mut cs = Cashier::new(
+            3,
+            50,
+            vec![1, 2, 3, 4, 5, 6, 7],
+            vec![100, 200, 300, 400, 300, 200, 100],
+        );
+
+        assert_eq!(cs.get_bill(vec![1, 2], vec![1, 2]), 500.0);
+        assert_eq!(cs.get_bill(vec![3, 7], vec![10, 10]), 4000.0);
+        assert_eq!(
+            cs.get_bill(vec![1, 2, 3, 4, 5, 6, 7], vec![1, 1, 1, 1, 1, 1, 1]),
+            800.0
+        );
+    }
 }

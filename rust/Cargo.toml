@@ -1,5 +1,5 @@
 [package]
-name = "apply-discount-every-n-orders"
+name = "leetcode"
 version = "0.1.0"
 edition = "2024"
 
