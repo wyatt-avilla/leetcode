@@ -12,3 +12,4 @@ pub mod design_memory_allocator;
 pub mod destination_city;
 pub mod find_words_containing_characters;
 pub mod flatten_nested_list_iterator;
+pub mod goat_latin;

@@ -51,19 +51,12 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let sentence = String::from("I speak Goat Latin");
         assert_eq!(
             Solution::to_goat_latin(sentence),
@@ -71,10 +64,14 @@ mod tests {
         );
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let sentence = String::from("The quick brown fox jumped over the lazy dog");
-        assert_eq!(Solution::to_goat_latin(sentence), String::from("heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"));
+        assert_eq!(
+            Solution::to_goat_latin(sentence),
+            String::from(
+                "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
+            )
+        );
     }
 }
