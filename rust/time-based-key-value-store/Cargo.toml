@@ -1,6 +1,0 @@
-[package]
-name = "time-based-key-value-store"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
