@@ -36,67 +36,55 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let pattern = String::from("abba");
         let s = String::from("dog cat cat dog");
         let result = Solution::word_pattern(pattern, s);
-        assert_eq!(result, true);
+        assert!(result);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let pattern = String::from("abba");
         let s = String::from("dog cat cat fish");
         let result = Solution::word_pattern(pattern, s);
-        assert_eq!(result, false);
+        assert!(!result);
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let pattern = String::from("aaaa");
         let s = String::from("dog cat cat dog");
         let result = Solution::word_pattern(pattern, s);
-        assert_eq!(result, false);
+        assert!(!result);
     }
 
-    // Test case 4
     #[test]
-    fn case4() {
+    fn case_4() {
         let pattern = String::from("abab");
         let s = String::from("dog cat cat dog");
         let result = Solution::word_pattern(pattern, s);
-        assert_eq!(result, false);
+        assert!(!result);
     }
 
-    // Test case 5
     #[test]
-    fn case5() {
+    fn case_5() {
         let pattern = String::from("abba");
         let s = String::from("dog dog dog dog");
         let result = Solution::word_pattern(pattern, s);
-        assert_eq!(result, false);
+        assert!(!result);
     }
 
-    // Test case 6
     #[test]
-    fn case6() {
+    fn case_6() {
         let pattern = String::from("aaa");
         let s = String::from("aa aa aa aa");
         let result = Solution::word_pattern(pattern, s);
-        assert_eq!(result, false);
+        assert!(!result);
     }
 }
