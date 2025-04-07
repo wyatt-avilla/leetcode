@@ -41,25 +41,34 @@ impl SmallestInfiniteSet {
     }
 }
 
-fn main() {
-    let mut sis = SmallestInfiniteSet::new();
-    sis.add_back(2);
-    assert!(sis.pop_smallest() == 1);
-    assert!(sis.pop_smallest() == 2);
-    assert!(sis.pop_smallest() == 3);
-    sis.add_back(1);
-    assert!(sis.pop_smallest() == 1);
-    assert!(sis.pop_smallest() == 4);
-    assert!(sis.pop_smallest() == 5);
+#[cfg(test)]
+mod tests {
+    use super::SmallestInfiniteSet;
 
-    let mut sis2 = SmallestInfiniteSet::new();
-    assert!(sis2.pop_smallest() == 1);
-    sis2.add_back(1);
-    assert!(sis2.pop_smallest() == 1);
-    assert!(sis2.pop_smallest() == 2);
-    assert!(sis2.pop_smallest() == 3);
-    sis2.add_back(2);
-    sis2.add_back(3);
-    assert!(sis2.pop_smallest() == 2);
-    assert!(sis2.pop_smallest() == 3);
+    #[test]
+    fn case_1() {
+        let mut sis = SmallestInfiniteSet::new();
+        sis.add_back(2);
+        assert_eq!(sis.pop_smallest(), 1);
+        assert_eq!(sis.pop_smallest(), 2);
+        assert_eq!(sis.pop_smallest(), 3);
+        sis.add_back(1);
+        assert_eq!(sis.pop_smallest(), 1);
+        assert_eq!(sis.pop_smallest(), 4);
+        assert_eq!(sis.pop_smallest(), 5);
+    }
+
+    #[test]
+    fn case_2() {
+        let mut sis = SmallestInfiniteSet::new();
+        assert_eq!(sis.pop_smallest(), 1);
+        sis.add_back(1);
+        assert_eq!(sis.pop_smallest(), 1);
+        assert_eq!(sis.pop_smallest(), 2);
+        assert_eq!(sis.pop_smallest(), 3);
+        sis.add_back(2);
+        sis.add_back(3);
+        assert_eq!(sis.pop_smallest(), 2);
+        assert_eq!(sis.pop_smallest(), 3);
+    }
 }
