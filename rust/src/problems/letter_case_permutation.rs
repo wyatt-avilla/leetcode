@@ -31,20 +31,12 @@ impl Solution {
         return all_possible;
     }
 }
-
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let s = String::from("a1b2");
         let mut result = Solution::letter_case_permutation(s);
         let mut expected = vec!["a1b2", "a1B2", "A1b2", "A1B2"];
@@ -53,9 +45,8 @@ mod tests {
         assert_eq!(expected, result);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let s = String::from("3z4");
         let mut result = Solution::letter_case_permutation(s);
         let mut expected = vec!["3z4", "3Z4"];
@@ -64,9 +55,8 @@ mod tests {
         assert_eq!(expected, result);
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let s = String::from("C");
         let mut result = Solution::letter_case_permutation(s);
         let mut expected = vec!["c", "C"];
@@ -75,9 +65,8 @@ mod tests {
         assert_eq!(expected, result);
     }
 
-    // Test case 4
     #[test]
-    fn case4() {
+    fn case_4() {
         let s = String::from("ggg");
         let mut result = Solution::letter_case_permutation(s);
         let mut expected = vec!["ggg", "ggG", "gGg", "gGG", "Ggg", "GgG", "GGg", "GGG"];
