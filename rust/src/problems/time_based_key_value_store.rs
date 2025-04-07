@@ -43,13 +43,19 @@ impl TimeMap {
     }
 }
 
-fn main() {
-    let mut timemap: TimeMap = TimeMap::new();
-    timemap.set("foo".into(), "bar".into(), 1);
-    assert!(timemap.get("foo".into(), 1) == "bar");
-    assert!(timemap.get("foo".into(), 3) == "bar");
+#[cfg(test)]
+mod tests {
+    use super::TimeMap;
 
-    timemap.set("foo".into(), "bar2".into(), 4);
-    assert!(timemap.get("foo".into(), 4) == "bar2");
-    assert!(timemap.get("foo".into(), 5) == "bar2");
+    #[test]
+    fn case_1() {
+        let mut timemap: TimeMap = TimeMap::new();
+        timemap.set("foo".into(), "bar".into(), 1);
+        assert_eq!(timemap.get("foo".into(), 1), "bar");
+        assert_eq!(timemap.get("foo".into(), 3), "bar");
+
+        timemap.set("foo".into(), "bar2".into(), 4);
+        assert_eq!(timemap.get("foo".into(), 4), "bar2");
+        assert_eq!(timemap.get("foo".into(), 5), "bar2");
+    }
 }
