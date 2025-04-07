@@ -82,51 +82,44 @@ fn main() {
     let result = Solution::beautiful_substrings(s, k);
 }
 
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let s = "baeyh".to_string();
         let k = 2;
         let result = Solution::beautiful_substrings(s, k);
         assert_eq!(result, 2);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let s = "abba".to_string();
         let k = 1;
         let result = Solution::beautiful_substrings(s, k);
         assert_eq!(result, 3);
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let s = "bcdf".to_string();
         let k = 1;
         let result = Solution::beautiful_substrings(s, k);
         assert_eq!(result, 0);
     }
 
-    // Test case 4
     #[test]
-    fn case4() {
+    fn case_4() {
         let s = "a".to_string();
         let k = 1;
         let result = Solution::beautiful_substrings(s, k);
         assert_eq!(result, 0);
     }
 
-    // Test case 5
     #[test]
-    fn case5() {
+    fn case_5() {
         let s = "b".to_string();
         let k = 1;
         let result = Solution::beautiful_substrings(s, k);
