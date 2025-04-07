@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/smallest-number-in-infinite-set/
+
 use std::cmp::Reverse;
 use std::collections::{BinaryHeap, HashSet};
 use std::iter::Peekable;
