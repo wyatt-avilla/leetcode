@@ -31,47 +31,36 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let nums = vec![2, 2, 1];
         assert_eq!(Solution::single_number(nums), 1);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let nums = vec![4, 1, 2, 1, 2];
         assert_eq!(Solution::single_number(nums), 4);
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let nums = vec![1];
         assert_eq!(Solution::single_number(nums), 1);
     }
 
-    // Test case 4
     #[test]
-    fn case4() {
+    fn case_4() {
         let nums = vec![2, 1, 2, 1, 4];
         assert_eq!(Solution::single_number(nums), 4);
     }
 
-    // Test case 5
     #[test]
-    fn case5() {
+    fn case_5() {
         let nums = vec![
             -336, 513, -560, -481, -174, 101, -997, 40, -527, -784, -283, -336, 513, -560, -481,
             -174, 101, -997, 40, -527, -784, -283, 354,
@@ -79,9 +68,8 @@ mod tests {
         assert_eq!(Solution::single_number(nums), 354);
     }
 
-    // Test case 6
     #[test]
-    fn case6() {
+    fn case_6() {
         let nums = vec![1, 2, 2];
         assert_eq!(Solution::single_number(nums), 1);
     }
