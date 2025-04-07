@@ -8,27 +8,19 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let nums = vec![3, 2, 4, 6];
         let result = Solution::maximum_xor(nums);
         assert_eq!(result, 7);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let nums = vec![1, 2, 3, 9, 2];
         let result = Solution::maximum_xor(nums);
         assert_eq!(result, 11);
