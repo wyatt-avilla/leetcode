@@ -114,19 +114,12 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let queries = vec![
             String::from("FooBar"),
             String::from("FooBarTest"),
@@ -139,9 +132,8 @@ mod tests {
         assert_eq!(result, vec![true, false, true, true, false]);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let queries = vec![
             String::from("FooBar"),
             String::from("FooBarTest"),
@@ -154,9 +146,8 @@ mod tests {
         assert_eq!(result, vec![true, false, true, false, false]);
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let queries = vec![
             String::from("FooBar"),
             String::from("FooBarTest"),
@@ -169,9 +160,8 @@ mod tests {
         assert_eq!(result, vec![false, true, false, false, false]);
     }
 
-    // Test case 4
     #[test]
-    fn case4() {
+    fn case_4() {
         let queries = vec![
             String::from("CompetitiveProgramming"),
             String::from("CounterPick"),
