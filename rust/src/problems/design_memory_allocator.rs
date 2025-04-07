@@ -57,17 +57,23 @@ impl Allocator {
     }
 }
 
-fn main() {
-    let mut loc = Allocator::new(10);
+#[cfg(test)]
+mod tests {
+    use super::Allocator;
 
-    assert!(loc.allocate(1, 1) == 0);
-    assert!(loc.allocate(1, 2) == 1);
-    assert!(loc.allocate(1, 3) == 2);
-    assert!(loc.free_memory(2) == 1);
-    assert!(loc.allocate(3, 4) == 3);
-    assert!(loc.allocate(1, 1) == 1);
-    assert!(loc.allocate(1, 1) == 6);
-    assert!(loc.free_memory(1) == 3);
-    assert!(loc.allocate(10, 2) == -1);
-    assert!(loc.free_memory(7) == 0);
+    #[test]
+    fn case1() {
+        let mut loc = Allocator::new(10);
+
+        assert_eq!(loc.allocate(1, 1), 0);
+        assert_eq!(loc.allocate(1, 2), 1);
+        assert_eq!(loc.allocate(1, 3), 2);
+        assert_eq!(loc.free_memory(2), 1);
+        assert_eq!(loc.allocate(3, 4), 3);
+        assert_eq!(loc.allocate(1, 1), 1);
+        assert_eq!(loc.allocate(1, 1), 6);
+        assert_eq!(loc.free_memory(1), 3);
+        assert_eq!(loc.allocate(10, 2), -1);
+        assert_eq!(loc.free_memory(7), 0);
+    }
 }
