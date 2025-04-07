@@ -16,32 +16,19 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // A helper function to compare vectors for equality
-    fn assert_eq_vec(actual: Vec<i32>, expected: Vec<i32>) {
-        assert_eq!(actual, expected);
-    }
-
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let words = vec![String::from("leet"), String::from("code")];
         let result = Solution::find_words_containing(words, 'e');
-        assert_eq_vec(result, vec![0, 1]);
+        assert_eq!(result, vec![0, 1]);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let words = vec![
             String::from("abc"),
             String::from("bcd"),
@@ -49,12 +36,11 @@ mod tests {
             String::from("cbc"),
         ];
         let result = Solution::find_words_containing(words, 'a');
-        assert_eq_vec(result, vec![0, 2]);
+        assert_eq!(result, vec![0, 2]);
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let words = vec![
             String::from("abc"),
             String::from("bcd"),
@@ -62,6 +48,6 @@ mod tests {
             String::from("cbc"),
         ];
         let result = Solution::find_words_containing(words, 'z');
-        assert_eq_vec(result, vec![]);
+        assert_eq!(result, vec![]);
     }
 }

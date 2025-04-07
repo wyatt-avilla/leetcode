@@ -10,3 +10,4 @@ pub mod design_authentication_manager;
 pub mod design_bitset;
 pub mod design_memory_allocator;
 pub mod destination_city;
+pub mod find_words_containing_characters;
