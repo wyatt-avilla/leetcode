@@ -40,7 +40,7 @@ impl Cashier {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use super::Cashier;
 
     #[test]
     fn case_1() {
