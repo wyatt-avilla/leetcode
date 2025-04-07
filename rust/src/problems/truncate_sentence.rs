@@ -13,19 +13,12 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let s = "Hello how are you Contestant".to_string();
         let k = 4;
         assert_eq!(
@@ -34,9 +27,8 @@ mod tests {
         );
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let s = "What is the solution to this problem".to_string();
         let k = 4;
         assert_eq!(
@@ -45,9 +37,8 @@ mod tests {
         );
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let s = "chopper is not a tanuki".to_string();
         let k = 5;
         assert_eq!(
