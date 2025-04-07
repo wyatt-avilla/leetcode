@@ -34,6 +34,8 @@ mod tests {
     fn case_2() {
         let nums1 = vec![4, 9, 5];
         let nums2 = vec![9, 4, 9, 8, 4];
-        assert_eq!(Solution::intersection(nums1, nums2), vec![4, 9]);
+        let mut sol = Solution::intersection(nums1, nums2);
+        sol.sort_unstable();
+        assert_eq!(sol, vec![4, 9]);
     }
 }
