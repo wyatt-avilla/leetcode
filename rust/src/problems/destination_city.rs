@@ -31,9 +31,8 @@ fn main() {
 mod tests {
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let paths = vec![
             vec!["London".to_string(), "New York".to_string()],
             vec!["New York".to_string(), "Lima".to_string()],
@@ -42,9 +41,8 @@ mod tests {
         assert_eq!(Solution::dest_city(paths), String::from("Sao Paulo"));
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let paths = vec![
             vec!["B".to_string(), "C".to_string()],
             vec!["D".to_string(), "B".to_string()],
@@ -53,9 +51,8 @@ mod tests {
         assert_eq!(Solution::dest_city(paths), String::from("A"));
     }
 
-    // Test case 3
     #[test]
-    fn case3() {
+    fn case_3() {
         let paths = vec![vec!["A".to_string(), "Z".to_string()]];
         assert_eq!(Solution::dest_city(paths), String::from("Z"));
     }
