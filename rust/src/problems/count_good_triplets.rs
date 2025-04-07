@@ -23,19 +23,12 @@ impl Solution {
     }
 }
 
-fn main() {
-    println!("main executed")
-}
-
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let arr = vec![3, 0, 1, 1, 9, 7];
         let a = 7;
         let b = 2;
@@ -44,9 +37,8 @@ mod tests {
         assert_eq!(result, 4);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let arr = vec![1, 1, 2, 2, 3];
         let a = 0;
         let b = 0;
