@@ -39,26 +39,32 @@ impl NestedIterator {
     }
 }
 
-fn main() {
-    let x = vec![
-        NestedInteger::List(vec![NestedInteger::Int(1), NestedInteger::Int(1)]),
-        NestedInteger::Int(2),
-        NestedInteger::List(vec![NestedInteger::Int(1), NestedInteger::Int(1)]),
-    ];
+#[cfg(test)]
+mod tests {
+    use super::{NestedInteger, NestedIterator};
 
-    let mut nested_list = NestedIterator::new(x);
-    assert!(nested_list.has_next());
-    assert!(nested_list.next() == 1);
+    #[test]
+    fn case_1() {
+        let x = vec![
+            NestedInteger::List(vec![NestedInteger::Int(1), NestedInteger::Int(1)]),
+            NestedInteger::Int(2),
+            NestedInteger::List(vec![NestedInteger::Int(1), NestedInteger::Int(1)]),
+        ];
 
-    assert!(nested_list.has_next());
-    assert!(nested_list.next() == 1);
+        let mut nested_list = NestedIterator::new(x);
+        assert!(nested_list.has_next());
+        assert_eq!(nested_list.next(), 1);
 
-    assert!(nested_list.has_next());
-    assert!(nested_list.next() == 2);
+        assert!(nested_list.has_next());
+        assert_eq!(nested_list.next(), 1);
 
-    assert!(nested_list.has_next());
-    assert!(nested_list.next() == 1);
+        assert!(nested_list.has_next());
+        assert_eq!(nested_list.next(), 2);
 
-    assert!(nested_list.has_next());
-    assert!(nested_list.next() == 1);
+        assert!(nested_list.has_next());
+        assert_eq!(nested_list.next(), 1);
+
+        assert!(nested_list.has_next());
+        assert_eq!(nested_list.next(), 1);
+    }
 }
