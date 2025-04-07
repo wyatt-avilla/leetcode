@@ -46,28 +46,37 @@ impl CustomStack {
     }
 }
 
-fn main() {
-    let mut s1 = CustomStack::new(3);
-    s1.push(1);
-    s1.push(2);
-    assert!(s1.pop() == 2);
-    s1.push(2);
-    s1.push(3);
-    s1.push(4);
-    s1.increment(5, 100);
-    s1.increment(2, 100);
-    assert!(s1.pop() == 103);
-    assert!(s1.pop() == 202);
-    assert!(s1.pop() == 201);
-    assert!(s1.pop() == -1);
+#[cfg(test)]
+mod tests {
+    use super::CustomStack;
 
-    let mut s2 = CustomStack::new(30);
-    assert!(s2.pop() == -1);
-    s2.increment(3, 40);
-    s2.push(30);
-    s2.increment(4, 63);
-    s2.increment(2, 79);
-    s2.increment(5, 57);
-    assert!(s2.pop() == 229);
-    s2.increment(5, 32);
+    #[test]
+    fn case_1() {
+        let mut s = CustomStack::new(3);
+        s.push(1);
+        s.push(2);
+        assert_eq!(s.pop(), 2);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.increment(5, 100);
+        s.increment(2, 100);
+        assert_eq!(s.pop(), 103);
+        assert_eq!(s.pop(), 202);
+        assert_eq!(s.pop(), 201);
+        assert_eq!(s.pop(), -1);
+    }
+
+    #[test]
+    fn case_2() {
+        let mut s = CustomStack::new(30);
+        assert!(s.pop() == -1);
+        s.increment(3, 40);
+        s.push(30);
+        s.increment(4, 63);
+        s.increment(2, 79);
+        s.increment(5, 57);
+        assert!(s.pop() == 229);
+        s.increment(5, 32);
+    }
 }
