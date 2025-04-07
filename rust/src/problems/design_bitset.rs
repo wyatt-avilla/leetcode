@@ -61,7 +61,7 @@ mod tests {
     use super::Bitset;
 
     #[test]
-    fn case1() {
+    fn case_1() {
         let mut bs = Bitset::new(5);
         bs.fix(3);
         bs.fix(1);

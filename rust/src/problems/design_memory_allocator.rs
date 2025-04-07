@@ -62,7 +62,7 @@ mod tests {
     use super::Allocator;
 
     #[test]
-    fn case1() {
+    fn case_1() {
         let mut loc = Allocator::new(10);
 
         assert_eq!(loc.allocate(1, 1), 0);

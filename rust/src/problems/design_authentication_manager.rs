@@ -58,7 +58,7 @@ mod tests {
     use super::AuthenticationManager;
 
     #[test]
-    fn case1() {
+    fn case_1() {
         let mut am = AuthenticationManager::new(5);
         am.renew("aaa".into(), 1);
         am.generate("aaa".into(), 2);
@@ -70,7 +70,7 @@ mod tests {
     }
 
     #[test]
-    fn case2() {
+    fn case_2() {
         let mut am = AuthenticationManager::new(13);
         am.renew("ajvy".into(), 1);
         assert_eq!(am.count_unexpired_tokens(3), 0);
