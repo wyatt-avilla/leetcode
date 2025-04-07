@@ -19,23 +19,19 @@ fn main() {
     println!("main executed")
 }
 
-// Import the necessary modules
 #[cfg(test)]
 mod tests {
-    // Import the Solution struct (assuming it's in the same module or crate)
     use super::Solution;
 
-    // Test case 1
     #[test]
-    fn case1() {
+    fn case_1() {
         let nums1 = vec![1, 2, 2, 1];
         let nums2 = vec![2, 2];
         assert_eq!(Solution::intersection(nums1, nums2), vec![2]);
     }
 
-    // Test case 2
     #[test]
-    fn case2() {
+    fn case_2() {
         let nums1 = vec![4, 9, 5];
         let nums2 = vec![9, 4, 9, 8, 4];
         assert_eq!(Solution::intersection(nums1, nums2), vec![4, 9]);

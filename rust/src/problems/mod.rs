@@ -13,3 +13,4 @@ pub mod destination_city;
 pub mod find_words_containing_characters;
 pub mod flatten_nested_list_iterator;
 pub mod goat_latin;
+pub mod intersection_of_two_arrays;
