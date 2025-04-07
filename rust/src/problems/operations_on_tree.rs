@@ -95,34 +95,43 @@ impl LockingTree {
     }
 }
 
-fn main() {
-    let mut lt = LockingTree::new(vec![-1, 0, 0, 1, 1, 2, 2]);
-    assert!(lt.lock(2, 2) == true);
-    assert!(lt.lock(2, 3) == false);
-    assert!(lt.lock(4, 5) == true);
-    assert!(lt.upgrade(0, 1) == true);
-    assert!(lt.lock(0, 1) == false);
+#[cfg(test)]
+mod tests {
+    use super::LockingTree;
 
-    let mut lt2 = LockingTree::new(vec![-1, 0, 8, 0, 7, 4, 2, 3, 3, 1]);
+    #[test]
+    fn case_1() {
+        let mut lt = LockingTree::new(vec![-1, 0, 0, 1, 1, 2, 2]);
+        assert!(lt.lock(2, 2));
+        assert!(!lt.lock(2, 3));
+        assert!(lt.lock(4, 5));
+        assert!(lt.upgrade(0, 1));
+        assert!(!lt.lock(0, 1));
+    }
 
-    assert!(lt2.upgrade(8, 39) == false);
-    assert!(lt2.upgrade(5, 28) == false);
-    assert!(lt2.upgrade(6, 33) == false);
-    assert!(lt2.upgrade(9, 24) == false);
-    assert!(lt2.lock(5, 22) == true);
-    assert!(lt2.upgrade(1, 3) == false);
-    assert!(lt2.lock(5, 20) == false);
-    assert!(lt2.upgrade(0, 38) == true);
-    assert!(lt2.lock(5, 14) == true);
-    assert!(lt2.lock(6, 34) == true);
-    assert!(lt2.lock(6, 28) == false);
-    assert!(lt2.upgrade(3, 23) == false);
-    assert!(lt2.upgrade(4, 45) == false);
-    assert!(lt2.upgrade(8, 7) == false);
-    assert!(lt2.upgrade(2, 18) == false);
-    assert!(lt2.lock(3, 35) == true);
-    assert!(lt2.upgrade(2, 16) == false);
-    assert!(lt2.lock(3, 21) == false);
-    assert!(lt2.upgrade(1, 41) == false);
-    assert!(lt2.unlock(5, 22) == false);
+    #[test]
+    fn case_2() {
+        let mut lt = LockingTree::new(vec![-1, 0, 8, 0, 7, 4, 2, 3, 3, 1]);
+
+        assert!(!lt.upgrade(8, 39));
+        assert!(!lt.upgrade(5, 28));
+        assert!(!lt.upgrade(6, 33));
+        assert!(!lt.upgrade(9, 24));
+        assert!(lt.lock(5, 22));
+        assert!(!lt.upgrade(1, 3));
+        assert!(!lt.lock(5, 20));
+        assert!(lt.upgrade(0, 38));
+        assert!(lt.lock(5, 14));
+        assert!(lt.lock(6, 34));
+        assert!(!lt.lock(6, 28));
+        assert!(!lt.upgrade(3, 23));
+        assert!(!lt.upgrade(4, 45));
+        assert!(!lt.upgrade(8, 7));
+        assert!(!lt.upgrade(2, 18));
+        assert!(lt.lock(3, 35));
+        assert!(!lt.upgrade(2, 16));
+        assert!(!lt.lock(3, 21));
+        assert!(!lt.upgrade(1, 41));
+        assert!(!lt.unlock(5, 22));
+    }
 }
