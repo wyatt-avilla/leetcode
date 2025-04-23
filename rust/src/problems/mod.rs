@@ -19,6 +19,7 @@ pub mod letter_case_permutation;
 pub mod maximum_odd_binary_number;
 pub mod maximum_xor_after_operations;
 pub mod missing_number;
+pub mod online_stock_span;
 pub mod operations_on_tree;
 pub mod pascals_triangle_ii;
 pub mod product_of_the_last_k_numbers;
