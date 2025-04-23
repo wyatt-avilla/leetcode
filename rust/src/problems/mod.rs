@@ -27,6 +27,7 @@ pub mod product_of_the_last_k_numbers;
 pub mod repeated_substrings_pattern;
 pub mod rle_iterator;
 pub mod rotate_string;
+pub mod seat_reservation_manager;
 pub mod single_number;
 pub mod smallest_number_in_infinite_set;
 pub mod snapshot_array;
