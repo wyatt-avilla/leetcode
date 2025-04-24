@@ -6,6 +6,7 @@ pub mod check_if_a_word_occurs_as_a_prefix_of_any_word_in_a_sentence;
 pub mod count_beautiful_substrings_i;
 pub mod count_good_triplets;
 pub mod count_largest_group;
+pub mod design_a_food_rating_system;
 pub mod design_a_number_container_system;
 pub mod design_a_stack_with_increment_operator;
 pub mod design_authentication_manager;
