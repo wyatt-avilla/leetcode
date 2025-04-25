@@ -18,6 +18,7 @@ pub mod destination_city;
 pub mod find_consecutive_integers_from_a_data_stream;
 pub mod find_words_containing_characters;
 pub mod flatten_nested_list_iterator;
+pub mod frequency_tracker;
 pub mod goat_latin;
 pub mod intersection_of_two_arrays;
 pub mod jewels_and_stones;
