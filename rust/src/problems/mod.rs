@@ -15,6 +15,7 @@ pub mod design_bitset;
 pub mod design_front_middle_back_queue;
 pub mod design_memory_allocator;
 pub mod destination_city;
+pub mod find_consecutive_integers_from_a_data_stream;
 pub mod find_words_containing_characters;
 pub mod flatten_nested_list_iterator;
 pub mod goat_latin;
