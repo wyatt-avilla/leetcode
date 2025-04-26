@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/design-front-middle-back-queue/
+
 use std::collections::VecDeque;
 
 #[derive(Debug)]

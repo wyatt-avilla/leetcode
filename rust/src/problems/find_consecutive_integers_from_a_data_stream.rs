@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/find-consecutive-integers-from-a-data-stream/
+
 #[derive(Debug)]
 struct DataStream {
     value: i32,
