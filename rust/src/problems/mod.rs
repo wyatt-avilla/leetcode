@@ -20,6 +20,7 @@ pub mod find_words_containing_characters;
 pub mod flatten_nested_list_iterator;
 pub mod frequency_tracker;
 pub mod goat_latin;
+pub mod insert_delete_getrandom_o1;
 pub mod intersection_of_two_arrays;
 pub mod jewels_and_stones;
 pub mod letter_case_permutation;
