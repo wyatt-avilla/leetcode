@@ -34,6 +34,7 @@ pub mod repeated_substrings_pattern;
 pub mod rle_iterator;
 pub mod rotate_string;
 pub mod seat_reservation_manager;
+pub mod simple_bank_system;
 pub mod single_number;
 pub mod smallest_number_in_infinite_set;
 pub mod snapshot_array;
