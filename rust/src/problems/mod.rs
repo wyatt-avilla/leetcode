@@ -14,6 +14,7 @@ pub mod design_authentication_manager;
 pub mod design_bitset;
 pub mod design_front_middle_back_queue;
 pub mod design_memory_allocator;
+pub mod design_task_manager;
 pub mod destination_city;
 pub mod encode_and_decode_tinyurl;
 pub mod exam_room;
