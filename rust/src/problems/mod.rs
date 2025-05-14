@@ -28,6 +28,7 @@ pub mod insert_delete_getrandom_o1;
 pub mod intersection_of_two_arrays;
 pub mod jewels_and_stones;
 pub mod letter_case_permutation;
+pub mod longest_uploaded_prefix;
 pub mod maximum_odd_binary_number;
 pub mod maximum_xor_after_operations;
 pub mod missing_number;
