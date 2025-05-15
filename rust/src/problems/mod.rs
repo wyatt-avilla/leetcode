@@ -36,6 +36,7 @@ pub mod online_stock_span;
 pub mod operations_on_tree;
 pub mod pascals_triangle_ii;
 pub mod product_of_the_last_k_numbers;
+pub mod range_sum_query_immutable;
 pub mod repeated_substrings_pattern;
 pub mod rle_iterator;
 pub mod rotate_string;
