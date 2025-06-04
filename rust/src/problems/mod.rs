@@ -20,6 +20,7 @@ pub mod destination_city;
 pub mod encode_and_decode_tinyurl;
 pub mod exam_room;
 pub mod find_consecutive_integers_from_a_data_stream;
+pub mod find_the_lexicographically_largest_string_from_the_box;
 pub mod find_words_containing_characters;
 pub mod finding_3_digit_even_numbers;
 pub mod flatten_nested_list_iterator;
