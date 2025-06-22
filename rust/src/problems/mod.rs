@@ -26,6 +26,7 @@ pub mod finding_3_digit_even_numbers;
 pub mod flatten_nested_list_iterator;
 pub mod frequency_tracker;
 pub mod goat_latin;
+pub mod implement_router;
 pub mod insert_delete_getrandom_o1;
 pub mod intersection_of_two_arrays;
 pub mod jewels_and_stones;
