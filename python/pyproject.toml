@@ -1,0 +1,13 @@
+[tool.ruff]
+[tool.ruff.lint]
+select = [ "ALL" ]
+ignore = [
+	"D",
+	"CPY",
+	"T20",
+	"S101",
+	"N802",
+	"N999",
+	"E501",
+	"PLR2004",
+]
