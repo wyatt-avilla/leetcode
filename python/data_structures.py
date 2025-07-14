@@ -4,6 +4,21 @@ from enum import Enum
 from typing import Any, Callable
 
 
+class ListNode:
+    def __init__(self, val: int = 0, next_node: ListNode | None = None) -> None:
+        self.val = val
+        self.next = next_node
+
+    def __str__(self) -> str:
+        node: ListNode | None = self
+        vals: list[int] = []
+        while node:
+            vals.append(node.val)
+            node = node.next
+
+        return "->".join(f"[{v}]" for v in vals)
+
+
 class TreeNode:
     class TraversalType(Enum):
         PREORDER = 0
