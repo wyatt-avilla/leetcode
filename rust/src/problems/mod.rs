@@ -35,6 +35,7 @@ pub mod longest_uploaded_prefix;
 pub mod maximum_odd_binary_number;
 pub mod maximum_xor_after_operations;
 pub mod missing_number;
+pub mod my_calendar_i;
 pub mod online_stock_span;
 pub mod operations_on_tree;
 pub mod pascals_triangle_ii;
