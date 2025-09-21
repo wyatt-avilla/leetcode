@@ -15,6 +15,7 @@ pub mod design_bitset;
 pub mod design_circular_queue;
 pub mod design_front_middle_back_queue;
 pub mod design_memory_allocator;
+pub mod design_movie_rental_system;
 pub mod design_task_manager;
 pub mod destination_city;
 pub mod encode_and_decode_tinyurl;
